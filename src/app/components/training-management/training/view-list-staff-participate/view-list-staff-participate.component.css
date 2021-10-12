@@ -1,0 +1,93 @@
+.title{
+  font-size: 20px;
+}
+table{
+  width: 100%;
+}
+.title{
+  font-size: 20px;
+}
+table{
+  width: 100%;
+}
+button{
+  border: none;
+  background-color: transparent;
+}
+
+.formDialog mat-form-field{
+  display: block;
+  width: 100%;
+  background-color: white;
+}
+.formDialog #time {
+  width: 40%;
+}
+.dialogBtn:first-child{
+  color: red;
+  margin-right: 50%;
+  padding: 2% 4%;
+}
+.dialogBtn:last-child{
+  color: green;
+  padding: 2% 4%;
+}
+.dialogBtn:hover{
+  background-color: rgb(202, 199, 199);
+}
+
+
+/* dialog detail profile */
+.avatar{
+  border: 1px solid;
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+h5.title{
+  font-weight: bold;
+  color: #4e73df;
+}
+.card-header{
+  background-color: #1cc88a;
+}
+.card-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: aliceblue;
+}
+.img-sex {
+  margin-left: 5% ;
+  width: 20%;
+}
+
+/* scorce interview */
+.labelScorceDialog{
+  font-size: 17px;
+}
+mat-button-toggle-group{
+  width: 100%;
+  background-color: transparent;
+  border: transparent;
+}
+.btnToggleApproval{
+margin: 0 auto;
+width: 50%;
+}
+.btnToggleApproval:first-child:hover{
+  background-color: red;
+  color: rgb(255 255 255 / 87%);
+}
+.btnToggleApproval:last-child:hover{
+  background-color: green;
+  color: rgb(255 255 255 / 87%);
+}
+.btnForm{
+  background-color: #4e73df;
+}
+.btnForm:last-child{
+  margin: 0 auto;
+}

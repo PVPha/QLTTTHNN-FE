@@ -1,0 +1,119 @@
+<h1 mat-dialog-title>Xét tăng lương </h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Số quyết định </mat-label>
+          <input matInput value="{{id_decision_temp}}" #id_decision>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput value="{{data.position}}" #position>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input matInput value="{{data.department}}" #department>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Ngày vào làm</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Ngày xét tăng lương</mat-label>
+          <input matInput [matDatepicker]="datepicker">
+          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div> -->
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>Ngày lập quyết định</mat-label>
+          <input matInput [matDatepicker]="picker" #timePicker>
+          <input type="text" style="display: none;" value="{{timePicker.value |date: 'yyyy-MM-dd'}}" #time>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field >
+          <mat-label>Mức lương căn bản</mat-label>
+          <input matInput type="number"  placeholder="0" value="{{data.salary}}" #current readonly>
+          <span matSuffix> VND</span>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field >
+          <mat-label>Mức lương tăng</mat-label>
+          <input matInput type="number"  placeholder="0" #increase>
+          <span matSuffix> VND</span>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('increase', 'increaseEditor')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Lý do
+            </mat-panel-title>
+            <mat-panel-description>
+              lý do tăng lương
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea style="display: none;" id="increaseTextArea" #content></textarea>
+          <editor
+            id="increaseEditor"
+            onmouseout=" setTimeout(getContent('increaseTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" matDialogClose (click)="onSubmit(data.ID, id_decision.value, id_staff.value, fullName.value, position.value, department.value, time.value, current.value, increase.value, content.value)">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+

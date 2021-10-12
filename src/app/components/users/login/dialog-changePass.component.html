@@ -1,0 +1,82 @@
+<div class="container">
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row justify-content-center">
+            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+            <div class="col-lg-6" style="transform: translate(-8px, 100px)">
+              <div>
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Đổi mật khẩu</h1>
+                </div>
+                <div class="form-group">
+                  <div [formGroup]="user">
+                    <!-- <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Tên đăng nhập"
+                        formControlName="username"
+                        #userName
+                        value="{{ data.userName }}"
+                        required
+                      />
+                      <mat-error
+                        *ngIf="user.controls.username.hasError('required')"
+                        >Vui lòng nhập tên đăng nhập</mat-error
+                      >
+                    </mat-form-field> -->
+                    <mat-form-field>
+                      <input
+                        matInput
+                        type="password"
+                        placeholder="Mật khẩu"
+                        formControlName="password"
+                        #passWord
+                        required
+                      />
+                      <mat-error
+                        *ngIf="user.controls.password.hasError('required')"
+                        >Vui lòng nhập mật khẩu</mat-error
+                      >
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input
+                        matInput
+                        type="password"
+                        placeholder="Mật khẩu mới"
+                        formControlName="newPassword"
+                        #newPassWord
+                        required
+                      />
+                      <mat-error
+                        *ngIf="user.controls.password.hasError('required')"
+                        >Vui lòng nhập mật khẩu mới</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+
+                  <button
+                    class="btn btn-primary btn-user btn-block"
+                    (click)="login(passWord.value, newPassWord.value)"
+                    matDialogClose
+                  >
+                    Đổi mật khẩu
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <img
+                src="https://source.unsplash.com/njDaUzOAMKs/390x520"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

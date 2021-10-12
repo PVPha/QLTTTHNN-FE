@@ -1,0 +1,56 @@
+<div class="container">
+<h1 mat-dialog-title>Đăng kí tham gia đào tạo</h1>
+
+  <form class="formDialog">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>Mã khóa đào tạo</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>Tên khóa đào tạo</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <mat-form-field id="time">
+          <mat-label>thời gian đăng ký</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <!-- <input matInput [(ngModel)]="data.animal"> -->
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div mat-dialog-actions>
+          <button mat-button  class="dialogBtn">Hủy</button>
+          <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+          <button type="submit" class="dialogBtn"   mat-button mat-dialog-close  cdkFocusInitial>Đăng ký</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

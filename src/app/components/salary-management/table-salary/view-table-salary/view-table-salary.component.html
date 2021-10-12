@@ -1,0 +1,467 @@
+<div class="container">
+  <div class="title mb-2">
+    <mat-card-header>Bảng lương</mat-card-header>
+    <b class="float-right" (click)="openDialogCalculations()">
+      <mat-icon>drag_indicator</mat-icon>
+    </b>
+  </div>
+  <div class="float-right">
+    <a
+      class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      (click)="export()"
+      ><i class="fas fa-download fa-sm text-white-50"></i> Xuất bảng lương</a
+    >
+  </div>
+  <!-- <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step> -->
+  <!-- <mat-form-field appearance="standard">
+    <mat-label>Tìm kiếm</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input />
+  </mat-form-field> -->
+  <form
+    class="
+      d-none d-sm-inline-block
+      form-inline
+      mr-auto
+      ml-md-3
+      my-2 my-md-0
+      mw-100
+      navbar-search
+    "
+  >
+    <div class="input-group mb-2">
+      <input
+        type="text"
+        class="form-control bg-light border-0 small"
+        placeholder="Tìm kiếm..."
+        aria-label="Search"
+        aria-describedby="basic-addon2"
+        matInput
+        (keyup)="applyFilter($event)"
+        #input
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-primary pt-2"
+          style="background-color: #4e73df; border-color: #4e73df"
+          type="button"
+        >
+          <i class="fas fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="mat-elevation-z8">
+    <ng-template matStepLabel>Bảng lương </ng-template>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="fullname" sticky>
+        <th mat-header-cell *matHeaderCellDef>Họ tên</th>
+        <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>Vị trí</th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="salary">
+        <th mat-header-cell *matHeaderCellDef>lương căn bản</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.salary | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="coefficientSalary">
+        <th mat-header-cell *matHeaderCellDef>Hệ số</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.coefficientSalary }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="workDay">
+        <th mat-header-cell *matHeaderCellDef>Giờ làm</th>
+        <td mat-cell *matCellDef="let element">{{ element.workDay }}</td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="overtime">
+        <th mat-header-cell *matHeaderCellDef>Tăng ca</th>
+        <td mat-cell *matCellDef="let element">{{ element.overtime }}</td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="reward">
+        <th mat-header-cell *matHeaderCellDef>Khen thưởng</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.reward | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="subsidy">
+        <th mat-header-cell *matHeaderCellDef>Trợ cấp</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.subsidy | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="allowance">
+        <th mat-header-cell *matHeaderCellDef>Phụ cấp</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.allowance | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="advance">
+        <th mat-header-cell *matHeaderCellDef>Tạm ứng</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.advance | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="discipline">
+        <th mat-header-cell *matHeaderCellDef>Phạt</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.discipline | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tax">
+        <th mat-header-cell *matHeaderCellDef>Thuế</th>
+        <td mat-cell *matCellDef="let element">{{ element.tax }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="insurance">
+        <th mat-header-cell *matHeaderCellDef>BHXH</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.insurance | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="kpi">
+        <th mat-header-cell *matHeaderCellDef>Thưởng KPI</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.KPI_salary | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sale">
+        <th mat-header-cell *matHeaderCellDef>Thưởng Sale</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.sale_salary | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="received">
+        <th mat-header-cell *matHeaderCellDef>Thực nhận</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.received | currency: "VND":"" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>hành động</th>
+        <td mat-cell *matCellDef="let element; let index = index">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <!-- <button mat-menu-item mat-raised-button >
+              <mat-icon>open_in_new</mat-icon>
+              <span>chi tiết</span>
+            </button>
+            <button mat-menu-item [disabled]="element.status == 'từ chối' ? true : false">
+              <mat-icon>done</mat-icon>
+              <span>duyệt</span>
+            </button>
+            <button mat-menu-item  [disabled]="element.status == 'duyệt' ? true : false">
+              <mat-icon>clear</mat-icon>
+              <span>từ chối</span>
+            </button> -->
+            <button
+              mat-menu-item
+              (click)="openDialogIncreaseSalary(element.ID, index)"
+            >
+              <mat-icon>attach_money</mat-icon>
+              <span>Xét tăng lương</span>
+            </button>
+            <button
+              mat-menu-item
+              (click)="openDialogAdvanceSalary(element.ID, index)"
+            >
+              <mat-icon>money_off</mat-icon>
+              <span>các khoản tạm ứng</span>
+            </button>
+            <!-- <button mat-menu-item  >
+              <mat-icon>assignment_late</mat-icon>
+              <span>Khiếu nại chấm công</span>
+            </button> -->
+            <!-- <button mat-menu-item >
+              <mat-icon>assignment_late</mat-icon>
+              <span>Hủy hợp đồng</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>library_books</mat-icon>
+              <span>Quản lý bằng cấp chứng chỉ</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>assessment</mat-icon>
+              <span>Lập quyết định khen thưởng</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>next_week</mat-icon>
+              <span>Lập quyết định bổ nhiệm</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>new_releases</mat-icon>
+              <span>Lập quyết định kỉ luật</span>
+            </button> -->
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+      <tr
+        mat-row
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns"
+      ></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">không tìm thấy "{{ input.value }}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      #MatPaginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+  <!-- </mat-step> -->
+  <!-- timeKeeping according to sale -->
+  <!-- <mat-step>
+  <div class="mat-elevation-z8">
+    <ng-template matStepLabel>Bảng lương theo doanh số</ng-template>
+    <table mat-table [dataSource]="dataSourceSale"> -->
+
+  <!-- <ng-container matColumnDef="timeKeepingId">
+        <th mat-header-cell *matHeaderCellDef> Mã bảng chấm công</th>
+        <td mat-cell *matCellDef="let element"> {{element.timeKeepingId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="staffId">
+        <th mat-header-cell *matHeaderCellDef> Mã Nhân viên </th>
+        <td mat-cell *matCellDef="let element"> {{element.staffId}} </td>
+      </ng-container> -->
+
+  <!-- <ng-container matColumnDef="fullname">
+        <th mat-header-cell *matHeaderCellDef> Họ tên </th>
+        <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="setSales">
+        <th mat-header-cell *matHeaderCellDef> Doanh số đề ra </th>
+        <td mat-cell *matCellDef="let element"> {{element.setSales}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="achieveSales">
+        <th mat-header-cell *matHeaderCellDef> Doanh số đạt được </th>
+        <td mat-cell *matCellDef="let element"> {{element.achieveSales}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="missingSales">
+        <th mat-header-cell *matHeaderCellDef> Doanh số thiếu </th>
+        <td mat-cell *matCellDef="let element"> {{element.missingSales}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="exceedSales">
+        <th mat-header-cell *matHeaderCellDef> Vượt doanh số </th>
+        <td mat-cell *matCellDef="let element"> {{element.exceedSales}} </td>
+      </ng-container> -->
+
+  <!-- <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> hành động </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu"> -->
+  <!-- <button mat-menu-item mat-raised-button >
+              <mat-icon>open_in_new</mat-icon>
+              <span>chi tiết</span>
+            </button>
+            <button mat-menu-item [disabled]="element.status == 'từ chối' ? true : false">
+              <mat-icon>done</mat-icon>
+              <span>duyệt</span>
+            </button>
+            <button mat-menu-item  [disabled]="element.status == 'duyệt' ? true : false">
+              <mat-icon>clear</mat-icon>
+              <span>từ chối</span>
+            </button> -->
+  <!-- <button mat-menu-item >
+              <mat-icon>work</mat-icon>
+              <span>Quyết định công tác</span>
+            </button>
+            <button mat-menu-item  >
+              <mat-icon>assignment</mat-icon>
+              <span>đơn xin nghỉ phép</span>
+            </button> -->
+  <!-- <button mat-menu-item  >
+              <mat-icon>assignment_late</mat-icon>
+              <span>Khiếu nại chấm công</span>
+            </button> -->
+  <!-- <button mat-menu-item >
+              <mat-icon>assignment_late</mat-icon>
+              <span>Hủy hợp đồng</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>library_books</mat-icon>
+              <span>Quản lý bằng cấp chứng chỉ</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>assessment</mat-icon>
+              <span>Lập quyết định khen thưởng</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>next_week</mat-icon>
+              <span>Lập quyết định bổ nhiệm</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>new_releases</mat-icon>
+              <span>Lập quyết định kỉ luật</span>
+            </button> -->
+  <!-- </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsSales"></tr> -->
+  <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+  <!-- <tr
+      mat-row
+      (click)="clickedRows.add(row)"
+      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: displayedColumnsSales;"
+  ></tr>
+    </table>
+    <mat-paginator #MatPaginatorSales  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-step> -->
+
+  <!-- <mat-step>
+  <div class="mat-elevation-z8">
+    <ng-template matStepLabel>Bảng lương công theo KPI</ng-template>
+    <table mat-table [dataSource]="dataSourceKPI"> -->
+
+  <!-- <ng-container matColumnDef="timeKeepingId">
+        <th mat-header-cell *matHeaderCellDef> Mã bảng chấm công</th>
+        <td mat-cell *matCellDef="let element"> {{element.timeKeepingId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="staffId">
+        <th mat-header-cell *matHeaderCellDef> Mã Nhân viên </th>
+        <td mat-cell *matCellDef="let element"> {{element.staffId}} </td>
+      </ng-container> -->
+
+  <!-- <ng-container matColumnDef="fullname">
+        <th mat-header-cell *matHeaderCellDef> Họ tên </th>
+        <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> Vị trí </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="setKPI">
+        <th mat-header-cell *matHeaderCellDef> KPI đề ra </th>
+        <td mat-cell *matCellDef="let element"> {{element.setKPI}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="achieveKPI">
+        <th mat-header-cell *matHeaderCellDef> KPI đạt được </th>
+        <td mat-cell *matCellDef="let element"> {{element.achieveKPI}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="classification">
+        <th mat-header-cell *matHeaderCellDef> xếp loại </th>
+        <td mat-cell *matCellDef="let element"> {{element.classification}} </td>
+      </ng-container> -->
+
+  <!-- <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> hành động </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu"> -->
+  <!-- <button mat-menu-item mat-raised-button >
+              <mat-icon>open_in_new</mat-icon>
+              <span>chi tiết</span>
+            </button>
+            <button mat-menu-item [disabled]="element.status == 'từ chối' ? true : false">
+              <mat-icon>done</mat-icon>
+              <span>duyệt</span>
+            </button>
+            <button mat-menu-item  [disabled]="element.status == 'duyệt' ? true : false">
+              <mat-icon>clear</mat-icon>
+              <span>từ chối</span>
+            </button> -->
+  <!-- <button mat-menu-item >
+              <mat-icon>work</mat-icon>
+              <span>Quyết định công tác</span>
+            </button>
+            <button mat-menu-item  >
+              <mat-icon>assignment</mat-icon>
+              <span>đơn xin nghỉ phép</span>
+            </button> -->
+  <!-- <button mat-menu-item  >
+              <mat-icon>assignment_late</mat-icon>
+              <span>Khiếu nại chấm công</span>
+            </button> -->
+  <!-- <button mat-menu-item >
+              <mat-icon>assignment_late</mat-icon>
+              <span>Hủy hợp đồng</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>library_books</mat-icon>
+              <span>Quản lý bằng cấp chứng chỉ</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>assessment</mat-icon>
+              <span>Lập quyết định khen thưởng</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>next_week</mat-icon>
+              <span>Lập quyết định bổ nhiệm</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>new_releases</mat-icon>
+              <span>Lập quyết định kỉ luật</span>
+            </button> -->
+  <!-- </mat-menu>
+        </td>
+      </ng-container> -->
+
+  <!-- <tr mat-header-row *matHeaderRowDef="displayedColumnsKPI"></tr> -->
+  <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+  <!-- <tr
+      mat-row
+      (click)="clickedRows.add(row)"
+      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: displayedColumnsKPI;"
+  ></tr>
+    </table>
+    <mat-paginator #MatPaginatorKPI  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-step>
+
+</mat-stepper>-->
+</div>
+
+<ul>
+  <li *ngFor="let clickedRow of clickedRows">
+    Clicked on {{ clickedRow.fullName }}
+  </li>
+</ul>

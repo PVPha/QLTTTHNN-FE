@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Đặt lịch hẹn phỏng vấn</h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <mat-form-field>
+      <mat-label>Mã hồ sơ</mat-label>
+      <input matInput [value]="data.id_candidate" #id_candidate>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Họ tên</mat-label>
+      <input matInput [value]="data.fullName" #fullName>
+    </mat-form-field>
+    <mat-form-field id="time">
+      <mat-label>thời gian</mat-label>
+      <input matInput [matDatepicker]="picker" #timePicker>
+      <input style="display: none;" #time [value]="timePicker.value | date:'yyyy-MM-dd'">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <!-- <input matInput [(ngModel)]="data.animal"> -->
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Địa điểm</mat-label>
+      <input matInput #location value="nguyễn chí thanh phường 9 quận 5">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ghi chú</mat-label>
+      <textarea matInput #noteSchedule ></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Hình thức phỏng vấn</mat-label>
+      <mat-select #form>
+        <mat-option *ngFor="let form of forms"  [value]="form.form">
+          {{form.form}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Người phỏng vấn</mat-label>
+      <mat-select #interviewer multiple>
+        <mat-option  *ngFor="let interviewer of interviewers" [value]="interviewer.id_staff">
+          <mat-label>{{interviewer.position}}</mat-label>
+          {{interviewer.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" class="dialogBtn" mat-dialog-close>Hủy</button>
+  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+  <button type="submit" class="dialogBtn" (click)="onSubmit(data.ID, id_candidate.value, fullName.value, time.value, location.value, form.value, noteSchedule.value, interviewer.value)"  mat-button mat-dialog-close  cdkFocusInitial>Hẹn</button>
+</div>

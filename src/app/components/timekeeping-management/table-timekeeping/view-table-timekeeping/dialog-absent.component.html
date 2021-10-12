@@ -1,0 +1,87 @@
+<h1 mat-dialog-title>Đơn xin nghỉ phép </h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã đơn</mat-label>
+          <input matInput value="{{id_decision_temp}}" #id_dicision>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput value="{{data.position}}" #position>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input matInput value="{{data.department}}" #department>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Thời gian xin nghỉ</mat-label>
+          <input matInput [matDatepicker]="picker" #Datepicker>
+          <input style="display: none;" [value]="Datepicker.value|date:'yyyy-MM-dd'" #time>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('contentAbsent', 'contentAbsentEditor'), getContent('absentContentTextArea')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Lý do
+            </mat-panel-title>
+            <mat-panel-description>
+              lý do xin nghỉ phép
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea id="absentContentTextArea" style="display: none;" #content></textarea>
+          <editor
+            id="contentAbsentEditor"
+            onmouseout=" setTimeout(getContent('absentContentTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" matDialogClose (click)="onSubmit(id_dicision.value, id_staff.value, fullName.value, position.value, department.value, time.value, content.value)">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+

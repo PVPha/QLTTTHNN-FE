@@ -1,0 +1,181 @@
+<h1 mat-dialog-title>Theo dỗi quá trình đào tạo</h1>
+<div mat-dialog-content>
+  <mat-horizontal-stepper orientation="vertical" [linear]="isLinear" #stepper>
+    <mat-step>
+  <form class="formDialog">
+    <ng-template matStepLabel>Quá trình đào tạo của nhân viên</ng-template>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã khóa đào tạo </mat-label>
+          <input matInput value="{{data.id_training}}" #id_training>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên khóa đào tạo </mat-label>
+          <input matInput value="{{data.name}}" #name>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput value="{{data.position}}" #position>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input matInput value="{{data.department}}" #department>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Thời gian đào tạo</mat-label>
+          <input matInput *ngIf="range.value.start == null" type="text" [value]="data.time" >
+          <mat-date-range-input [hidden]="range.value.start == null" [formGroup]="range" [rangePicker]="rangepicker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+            <input style="display: none;" type="text" value="{{ range.value.start !== null ? (range.value.start|date: 'dd-MM-yyyy') : time[0]}}" #timeStart>
+            <input style="display: none;" type="text" value="{{ range.value.end !== null ? (range.value.end|date: 'dd-MM-yyyy') : time[1]}}" #timeEnd>
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="rangepicker" ></mat-datepicker-toggle>
+          <mat-date-range-picker #rangepicker ></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Chuyên cần</mat-label>
+          <input matInput value="{{data.diligence}}" #deligence>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Ghi chú</mat-label>
+          <textarea rows="3" matInput  value="{{data.diligence}}" #note>
+          </textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary" matStepperNext>Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</mat-step>
+<mat-step>
+  <form class="formDialog">
+    <ng-template matStepLabel> Đánh giá quá trình đào tạo</ng-template>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã khóa đào tạo </mat-label>
+          <input matInput value="{{data.id_training}}">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên khóa đào tạo </mat-label>
+          <input matInput value="{{data.name}}">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('evaluate', 'evaluateEditor')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Đánh giá
+            </mat-panel-title>
+            <mat-panel-description>
+              đánh giá chi tiết quá trình đào tạo
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea style="display: none;" id="trainingTextArea" #evaluate></textarea>
+          <editor
+            id="evaluateEditor"
+            onmouseout=" setTimeout(getContent('trainingTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" (click)="onSubmitProcess(id_training.value, name.value, id_staff.value, fullName.value, position.value, department.value, timeStart.value, timeEnd.value, deligence.value, note.value, evaluate.value)" matDialogClose>Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</mat-step>
+</mat-horizontal-stepper>
+</div>
+<div id="evaluate" style="display: none;">
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>Các tiêu chí đánh giá</th>
+        <th>hệ số điểm</th>
+        <th>số điểm</th>
+        <th>Xếp loại</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>tiêu chí 1</td>
+        <td>10</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>tiêu chí 2</td>
+        <td>10</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

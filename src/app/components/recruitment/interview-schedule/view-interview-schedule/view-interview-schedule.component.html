@@ -1,0 +1,95 @@
+<div class="container">
+
+
+
+<form method="dialog">
+
+
+<textarea id="textArea">
+  <p><img style="display: block; margin-left: auto; margin-right: auto;" title="Tiny Logo" src="https://www.tiny.cloud/labs/android-chrome-256x256.png" alt="TinyMCE Logo" width="128" height="128" /></p>
+  <span><h1>test</h1></span>
+  <span>sdf</span>
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Cost</th>
+        <th>Really?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="test">TinyMCE</td>
+        <td class="test">Free</td>
+        <td class="test">YES!</td>
+      </tr>
+      <tr>
+        <td class="test">Plupload</td>
+        <td class="test">Free</td>
+        <td class="test">YES!</td>
+      </tr>
+    </tbody>
+  </table>
+</textarea>
+
+
+
+<button type="submit" id="submit" class="btn btn-primary" onclick="getVal()" (click)="onClick()">Submit</button>
+</form>
+
+<div id="editorArea">
+
+</div>
+
+</div>
+
+
+<editor
+  apikey="g070n42f1h0won3aaevgw9ufk4jtqb0f1tixpqvg5ibpk9p1"
+  [(ngModel)]="html"
+    id="testEditor"
+   [init]="{
+     height: 500,
+     menubar: false,
+     plugins: [
+       'advlist autolink lists link image charmap print preview anchor',
+       'searchreplace visualblocks code fullscreen',
+       'insertdatetime media table paste code help wordcount'
+     ],
+     toolbar:
+       'undo redo | formatselect | bold italic backcolor | \
+       alignleft aligncenter alignright alignjustify | \
+       bullist numlist outdent indent | removeformat | help'
+   }"
+ >
+</editor>
+
+ <button onclick="setContent()" class="btn btn-primary">set content</button>
+ <button onclick="getContent()" class="btn btn-primary">get content</button>
+
+ <div id="getContentArea">
+
+ </div>
+ <div id="contentEditor" style="display: none;">
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Cost</th>
+        <th>Really?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="test">TinyMCE</td>
+        <td class="test">Free</td>
+        <td class="test">YES!</td>
+      </tr>
+      <tr>
+        <td class="test">Plupload</td>
+        <td class="test">Free</td>
+        <td class="test">YES!</td>
+      </tr>
+    </tbody>
+  </table>
+ </div>

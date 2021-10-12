@@ -1,0 +1,113 @@
+<div class="container">
+  <!-- Outer Row -->
+  <div
+    class="row justify-content-center"
+    style="margin: 0 -15%; transform: translate(-1%, -7%)"
+  >
+    <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0" style="height: 550px">
+          <!-- Nested Row within Card Body -->
+          <div
+            class="row justify-content-center"
+            style="transform: translate(0%, 5%)"
+          >
+            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+            <div class="col-lg-6" style="transform: translate(0%, 20%)">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Đăng nhập</h1>
+                </div>
+                <!-- <form class="user">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-user"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="tên người dùng"
+                      #userName
+                      required
+                      oninvalid="this.setCustomValidity('nhập tên tài khoản người dùng')"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control form-control-user"
+                      id="exampleInputPassword"
+                      placeholder="mật khẩu"
+                      #passWord
+                      required
+                      oninvalid="this.setCustomValidity('nhập mật khẩu người dùng')"
+                    />
+                  </div>
+                  <button
+                    class="btn btn-primary btn-user btn-block"
+                    (click.)="login(userName.value, passWord.value)"
+                  >
+                    Đăng nhập
+                  </button>
+                  <div [hidden]="error">
+                    <p>{{ error }}</p>
+                  </div>
+                </form> -->
+                <div class="form-group">
+                  <div [formGroup]="user">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Tên đăng nhập"
+                        formControlName="username"
+                        #userName
+                        required
+                      />
+                      <mat-error
+                        *ngIf="user.controls.username.hasError('required')"
+                        >Vui lòng nhập tên đăng nhập</mat-error
+                      >
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input
+                        matInput
+                        type="password"
+                        placeholder="Mật khẩu"
+                        formControlName="password"
+                        #passWord
+                        required
+                      />
+                      <mat-error
+                        *ngIf="user.controls.password.hasError('required')"
+                        >Vui lòng nhập mật khẩu</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+
+                  <button
+                    class="btn btn-primary btn-user btn-block"
+                    (click)="login(userName.value, passWord.value)"
+                  >
+                    Đăng nhập
+                  </button>
+                </div>
+
+                <!-- <div class="text-center">
+                                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                              </div>
+                              <div class="text-center">
+                                  <a class="small" href="register.html">Create an Account!</a>
+                              </div> -->
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <img
+                src="https://source.unsplash.com/njDaUzOAMKs/390x520"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

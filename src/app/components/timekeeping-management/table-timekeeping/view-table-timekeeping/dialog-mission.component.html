@@ -1,0 +1,121 @@
+<h1 mat-dialog-title>Quyết định công tác </h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Số quyết định</mat-label>
+          <input matInput value="{{id_decision_temp}}" #id_dicision>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput value="{{data.position}}" #position>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input matInput value="{{data.department}}" #department>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Nơi công tác</mat-label>
+          <input matInput value="" #location>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Ngày lập quyết định</mat-label>
+          <input matInput [matDatepicker]="picker" #date>
+          <input style="display: none;" [value]="date.value | date:'yyyy-MM-dd'" #date_dicision>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field >
+          <mat-label>Hỗ trợ chi phí</mat-label>
+          <input matInput type="number"  placeholder="0" #cost>
+          <span matSuffix>VND</span>
+        </mat-form-field>
+      </div>
+      <div class="col-2"></div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>thời gian công tác</mat-label>
+          <mat-date-range-input [formGroup]="range" [rangePicker]="rangePicker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+            <input style="display: none;" type="text" value="{{range.value.start|date: 'dd-MM-yyyy'}}" #timeStart>
+            <input style="display: none;" type="text" value="{{range.value.end|date: 'dd-MM-yyyy'}}" #timeEnd>
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+          <mat-date-range-picker #rangePicker></mat-date-range-picker>
+          <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        </mat-form-field>
+
+        <!-- <p> {{(range.value.end | date: "dd-MM") | json}}</p> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('contentMission', 'contentMissionEditor'), getContent('missionContentTextArea')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Nội dung công tác
+            </mat-panel-title>
+            <mat-panel-description>
+              nội dung chi tiết công tác
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea id="missionContentTextArea" style="display: none;" #content></textarea>
+          <editor
+            id="contentMissionEditor"
+            onmouseout=" setTimeout(getContent('missionContentTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" matDialogClose (click)="onSubmit(id_dicision.value, id_staff.value, fullName.value, position.value, department.value, location.value, date_dicision.value, cost.value, timeStart.value, timeEnd.value, content.value)">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,631 @@
+
+<div class="container ">
+  <div class="title">
+    <mat-card-header>NHẬP HỒ SƠ ỨNG VIÊN</mat-card-header>
+  </div>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step>
+  <form class="form ">
+    <ng-template matStepLabel>Nhập thông tin nhân viên</ng-template>
+    <div class="row">
+      <div class="col-3">
+        <span id="avatar">
+          <img class="img-fluid" [src]="staffProfiles[0].image" alt="">
+          <input type="file" name="" id="" class="impAvatar" #image [value]="staffProfiles[0].image" >
+        </span>
+        <label id="titleAvatar">Ảnh</label>
+      </div>
+      <div class="col-3 ">
+        <mat-form-field appearance="fill">
+          <mat-label>Mã Nhân Viên </mat-label>
+          <input matInput #id_staff [value]="staffProfiles[0].id_staff">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Họ tên</mat-label>
+          <input matInput [value]="staffProfiles[0].fullName" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Giới tính</mat-label>
+          <input matInput #sex [value]="staffProfiles[0].sex">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Ngày thánh năm sinh</mat-label>
+          <input matInput [matDatepicker]="datepicker" [value]="staffProfiles[0].dateOfBirth" #datePicker>
+          <input style="display: none;" type="text" #dob value="{{datePicker.value|date:'yyyy-MM-dd'}}">
+          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Số điện thoại</mat-label>
+          <input matInput #phoneNumber [value]="staffProfiles[0].phoneNumber">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>email</mat-label>
+          <input type="email" matInput #email [value]="staffProfiles[0].email" required>
+        </mat-form-field>
+        <!-- <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                placeholder="Ex. pat@example.com"
+                [value]="candidateProfiles[0].email" #email>
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field> -->
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Địa chỉ</mat-label>
+          <input matInput [value]="staffProfiles[0].address" #address>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>CMND</mat-label>
+          <input matInput #identityCard>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="relativeFile" appearance="fill">
+          <mat-label>Tình trạng sức khỏe</mat-label>
+          <input matInput #health>
+          <!-- <input type="file" class="float-right" name="" id="file"> -->
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Quê quán</mat-label>
+          <input matInput #homeTown>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Tôn giáo</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+    </div> -->
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Dân tộc</mat-label>
+          <input matInput #nation>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Quê quán</mat-label>
+          <input matInput #homeTown>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Vị trí</mat-label>
+          <input matInput #position [value]="staffProfiles[0].position">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Bộ phận</mat-label>
+          <input matInput #department [value]="staffProfiles[0].department">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận </mat-label>
+          <input type="text"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto"
+                 [value]="staffProfiles[0].department"
+                 #department>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option  *ngFor="let option of filteredOptions | async" [value]="option" >
+                  {{option}}
+
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div> -->
+    <div class="row justify-content-center">
+      <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>lương cơ bản</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0" [value]="staffProfiles[0].salary" #salary>
+          <!-- <span matPrefix>$&nbsp;</span> -->
+          <span matSuffix>VNĐ</span>
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <mat-form-field  appearance="fill">
+          <mat-label>Hệ số lương</mat-label>
+          <input matInput type="number"  placeholder="0" #coefficientSalary>
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <mat-form-field  appearance="fill">
+          <mat-label>Số ngày phép</mat-label>
+          <input matInput type="number"  placeholder="0" #leaveDay>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Học vấn</mat-label>
+          <input matInput #education [value]="staffProfiles[0].education">
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field class="relativeFile" appearance="fill">
+          <mat-label>Ngoại ngữ</mat-label>
+          <input matInput #languageSkill [value]="staffProfiles[0].languageSkill">
+          <!-- <input type="file" class="float-right" name="" id="file"> -->
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ml-auto mr-auto">
+        <button type="submit" class="btn btn-primary mb-5" (click)="onSubmit(id_staff.value, fullName.value, sex.value, dob.value, identityCard.value, nation.value, homeTown.value, email.value, phoneNumber.value, address.value, position.value, department.value, health.value, salary.value, coefficientSalary.value, leaveDay.value, education.value, languageSkill.value)" matStepperNext>Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</mat-step>
+
+<!-- form add contract -->
+
+<mat-step>
+  <form class="form ">
+    <ng-template matStepLabel>Lập hợp đồng lao động</ng-template>
+    <div class="row">
+      <div class="col-3">
+        <!-- <span id="avatar">
+          <img class="img-fluid" src="{{avatar}}" alt="">
+          <input type="file" name="" id="" class="impAvatar">
+        </span>
+        <label id="titleAvatar">Ảnh</label> -->
+      </div>
+      <div class="col-3 ">
+        <mat-form-field>
+          <mat-label>Mã số hợp đồng</mat-label>
+          <input matInput #id_contract>
+        </mat-form-field>
+      </div>
+      <div class="col-3 ">
+        <mat-form-field>
+          <mat-label>Mã Nhân Viên  </mat-label>
+          <input matInput [value]="id_staff.value" #id_staff_c>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Họ tên</mat-label>
+          <input matInput [value]="fullName.value" #fullName_c>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field >
+          <mat-label>Ngày thánh năm sinh</mat-label>
+          <input matInput [matDatepicker]="picker2" #contractDate [value]="dob.value">
+          <input style="display: none;" type="text"  [value]="contractDate.value |date:'yyyy-MM-dd'" #dob_c>
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Loại hợp đồng</mat-label>
+          <mat-select #typeContract>
+            <mat-option value="dh">Dài hạn</mat-option>
+            <mat-option value="nh">Ngắn hạn</mat-option>
+            <mat-option value="tv">Thời vụ</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+      <mat-form-field>
+        <mat-label>Thời hạn hợp đồng</mat-label>
+        <input matInput type="number" #duration class="example-right-align" placeholder="0">
+        <!-- <span matPrefix>$&nbsp;</span> -->
+        <span matSuffix>Tháng</span>
+      </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Thời gian</mat-label>
+          <mat-date-range-input [formGroup]="rangeContract" [rangePicker]="rangepicker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="rangepicker"></mat-datepicker-toggle>
+          <mat-date-range-picker #rangepicker></mat-date-range-picker>
+          <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+          <!-- {{rangeContract.value | json}} -->
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>CMND</mat-label>
+          <input matInput [value]="identityCard.value" #identityCard_c>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Số điện thoại</mat-label>
+          <input matInput [value]="phoneNumber.value" #phoneNumber_c>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Địa chỉ</mat-label>
+          <input matInput [value]="address.value" #address_c>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput [value]="position.value" #position_c>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <!-- <input type="text"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto"
+                 [value]="department.value"
+                 #department_c> -->
+            <input matInput [value]="department.value" #department_c>
+            <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field >
+          <mat-label>lương cơ bản</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0">
+
+          <span matSuffix>00000 VNĐ</span>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field  >
+          <mat-label>Hệ số lương</mat-label>
+          <input matInput type="number"  placeholder="0">
+        </mat-form-field>
+      </div>
+    </div> -->
+    <div class="row justify-content-center">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('contract', 'editorContract')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Hợp đồng
+            </mat-panel-title>
+            <mat-panel-description>
+              chi tiết hợp đồng
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <!-- <app-view-interview-schedule></app-view-interview-schedule> -->
+        <!-- <textarea name="" id="contract"  rows="20" matInput > -->
+          <textarea style="display: none;" id="contractTextArea" #content></textarea>
+          <editor
+            id="editorContract"
+            onmouseout=" setTimeout(getContent('contractTextArea'),10000)"
+            [init]="{
+              height: 300,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+            }"
+          >
+
+        </editor>
+        <!-- </textarea> -->
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ml-auto mr-auto">
+        <button type="submit" class="btn btn-primary mt-2 mb-5" (click)="onSubmitContract(id_contract.value, id_staff_c.value, fullName_c.value, dob_c.value, typeContract.value, duration.value, rangeContract.value, phoneNumber_c.value, address_c.value, identityCard_c.value, position_c.value, department_c.value, content.value )" matStepperNext>Cập nhật </button>
+      </div>
+    </div>
+  </form>
+</mat-step>
+<mat-step>
+  <form class="form ">
+    <ng-template matStepLabel>Tiếp nhận nhân viên</ng-template>
+    <div class="row ">
+      <div class="col-3"></div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Số quyết định</mat-label>
+          <input matInput #id_dicision>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field >
+          <mat-label>Ngày cấp</mat-label>
+          <input matInput [matDatepicker]="datepickerAllocation" #timePicker>
+          <input style="display: none;" type="text" [value]="timePicker.value |date:'yyyy-MM-dd'" #time_r>
+          <mat-datepicker-toggle matSuffix [for]="datepickerAllocation"></mat-datepicker-toggle>
+          <mat-datepicker #datepickerAllocation></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput [value]="id_staff.value" #id_staff_r>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput [value]="fullName.value" #fullName_r>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('resources', 'resourcesEditor')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Cấp phát tài nguyên
+            </mat-panel-title>
+            <mat-panel-description>
+              cấp phát các trang thiết bị
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea style="display: none;" id="resourcesTextArea" #content_r></textarea>
+          <editor
+            id="resourcesEditor"
+            onmouseout=" setTimeout(getContent('resourcesTextArea'),10000)"
+            [init]="{
+              height: 250,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ml-auto mr-auto">
+        <button type="submit" class="btn btn-primary mt-2 mb-5" (click)="onSubmitResource(id_dicision.value, time_r.value, id_staff_r.value, fullName_r.value, content_r.value)" [routerLink]="['/view-staffProfile']" routerLinkActive="router-link-active" >cập nhật </button>
+      </div>
+    </div>
+  </form>
+</mat-step>
+</mat-horizontal-stepper>
+</div>
+
+
+
+<div id="resources" style="display: none;">
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>Mã tài nguyên</th>
+        <th>Tên tài nguyên</th>
+        <th>Số lượng</th>
+        <th>Tình trạng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="test">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+        <td class="test">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+        <td class="test">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+        <td class="test">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+      </tr>
+      <tr>
+        <td class="test">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+        <td class="test">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+        <td class="test">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+        <td class="test">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="contract" style="display: none;">
+  <h3>Điều 1: Điều khoản chung</h3>
+  <ol>
+    <li>Loại HĐLĐ:</li>
+    <li>Thời hạn HĐLĐ {{duration.value}} tháng</li>
+    <li>Thời điểm từ: ngày …… tháng …… năm …….. đến ngày …… tháng …… năm ……</li>
+    <li>Địa điểm làm việc:</li>
+    <li>Bộ phận công tác: Phòng             <span> Chức danh chuyên môn (vị trí công tác):                </span></li>
+    <li>Nhiệm vụ công việc như sau:
+      <ul>
+        <li>Thực hiện công việc theo đúng chức danh chuyên môn của mình dưới sự quản lý, điều hành của Ban Giám đốc (và các cá nhân được bổ nhiệm hoặc ủy quyền phụ trách).</li>
+        <li>Phối hợp cùng với các bộ phận, phòng ban khác trong Công ty để phát huy tối đa hiệu quả công việc.</li>
+        <li>Hoàn thành những công việc khác tùy thuộc theo yêu cầu kinh doanh của Công ty và theo quyết định của Ban Giám đốc (và các cá nhân được bổ nhiệm hoặc ủy quyền phụ trách).</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>Điều 2: Chế độ làm việc</h3>
+
+  <ol>
+    <li>Thời gian làm việc:</li>
+    <li>Từ ngày thứ 2 đến sáng ngày thứ 7:
+      <ul>
+        <li>Buổi sáng : 8h00 – 12h00</li>
+        <li>Buổi chiều: 13h30 – 17h30</li>
+        <li>Sáng ngày thứ 7: Làm việc từ 08h00 đến 12h00</li>
+      </ul>
+    </li>
+    <li>Do tính chất công việc, nhu cầu kinh doanh hay nhu cầu của tổ chức/bộ phận, Công ty có thể cho áp dụng thời gian làm việc linh hoạt. Những nhân viên được áp dụng thời gian làm việc linh hoạt có thể không tuân thủ lịch làm việc cố định bình thường mà làm theo ca kíp, nhưng vẫn phải đảm bảo đủ số giờ làm việc theo quy định.</li>
+    <li>Thiết bị và công cụ làm việc sẽ được Công ty cấp phát tùy theo nhu cầu của công việc. Điều kiện an toàn và vệ sinh lao động tại nơi làm việc theo quy định của pháp luật hiện hành.</li>
+  </ol>
+
+  <h3>Điều 3: Nghĩa vụ và quyền lợi của người lao động</h3>
+
+  <h4>1. Nghĩa vụ</h4>
+
+  <ol style="list-style: lower-alpha;">
+    <li>Thực hiện công việc với sự tận tâm, tận lực và mẫn cán, đảm bảo hoàn thành công việc với hiệu quả cao nhất theo sự phân công, điều hành (bằng văn bản hoặc bằng miệng) của Ban Giám đốc trong Công ty (và các cá nhân được Ban Giám đốc bổ nhiệm hoặc ủy quyền phụ trách).</li>
+    <li>Hoàn thành công việc được giao và sẵn sàng chấp nhận mọi sự điều động khi có yêu cầu.</li>
+    <li>Nắm rõ và chấp hành nghiêm túc kỷ luật lao động, an toàn lao động, vệ sinh lao động, PCCC, văn hóa công ty, nội quy lao động và các chủ trương, chính sách của Công ty.</li>
+    <li>Bồi thường vi phạm và vật chất theo quy chế, nội quy của Công ty và pháp luật Nhà nước quy định.</li>
+    <li>Tham dự đầy đủ, nhiệt tình các buổi huấn luyện, đào tạo, hội thảo do Bộ phận hoặc Công ty tổ chức.</li>
+    <li>Thực hiện đúng cam kết trong HĐLĐ và các thỏa thuận bằng văn bản khác với Công ty.</li>
+    <li>Đóng các loại bảo hiểm, các khoản thuế.... đầy đủ theo quy định của pháp luật.</li>
+    <li>Chế độ đào tạo: Theo quy định của Công ty và yêu cầu công việc. Trong trường hợp CBNV được cử đi đào tạo thì nhân viên phải hoàn thành khoá học đúng thời hạn, phải cam kết sẽ phục vụ lâu dài cho Công ty sau khi kết thúc khoá học và được hưởng nguyên lương, các quyền lợi khác được hưởng như người đi làm.</li>
+    <li>Nếu sau khi kết thúc khóa đào tạo mà nhân viên không tiếp tục hợp tác với Công ty thì nhân viên phải hoàn trả lại 100% phí đào tạo và các khoản chế độ đã được nhận trong thời gian đào tạo.</li>
+  </ol>
+
+  <h4>2. Quyền lợi</h4>
+
+  <ol style="list-style: lower-alpha;">
+    <li>Tiền lương và phụ cấp:
+      <ul>
+        <li>Mức lương chính: …. VNĐ/tháng.</li>
+        <li>Phụ cấp trách nhiệm: ..... VNĐ/tháng</li>
+        <li>Phụ cấp hiệu suất công việc: Theo đánh giá của quản lý.</li>
+        <li>Lương hiệu quả: Theo quy định của phòng ban, công ty.</li>
+        <li>Công tác phí: Tùy từng vị trí, người lao động được hưởng theo quy định của công ty.</li>
+        <li>Hình thức trả lương: Lương thời gian.</li>
+      </ul>
+    </li>
+    <li>Các quyền lợi khác:
+      <ul>
+        <li> Khen thưởng: Người lao động được khuyến khích bằng vật chất và tinh thần khi có thành tích trong công tác hoặc theo quy định của công ty.</li>
+        <li>Chế độ nâng lương: Theo quy định của Nhà nước và quy chế tiền lương của Công ty. Người lao động hoàn thành tốt nhiệm vụ được giao, không vi phạm kỷ luật và/hoặc không trong thời gian xử lý kỷ luật lao động và đủ điều kiện về thời gian theo quy chế lương thì được xét nâng lương.</li>
+        <li>Chế độ nghỉ: Theo quy định chung của Nhà nước</li>
+        <li>Chế độ Bảo hiểm xã hội theo quy định của nhà nước.</li>
+        <li>Các chế độ được hưởng: Người lao động được hưởng các chế độ ngừng việc, trợ cấp thôi việc hoặc bồi thường theo quy định của Pháp luật hiện hành.</li>
+        <li>Thỏa thuận khác: Công ty được quyền chấm dứt HĐLĐ trước thời hạn đối với Người lao động có kết quả đánh giá hiệu suất công việc dưới mức quy định trong 03 tháng liên tục.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>Điều 4: Nghĩa vụ và quyền hạn của người sử dụng lao động</h3>
+
+  <h4>1. Nghĩa vụ</h4>
+
+  <p>Thực hiện đầy đủ những điều kiện cần thiết đã cam kết trong Hợp đồng lao động để người lao động đạt hiệu quả công việc cao. Bảo đảm việc làm cho người lao động theo Hợp đồng đã ký.
+
+    Thanh toán đầy đủ, đúng thời hạn các chế độ và quyền lợi cho người lao động theo Hợp đồng lao động.</p>
+
+  <h4>2. Quyền hạn</h4>
+
+  <ol style="list-style: lower-alpha;">
+    <li>Điều hành người lao động hoàn thành công việc theo Hợp đồng (bố trí, điều chuyển công việc cho người lao động theo đúng chức năng chuyên môn).</li>
+    <li>Có quyền chuyển tạm thời lao động, ngừng việc, thay đổi, tạm thời chấm dứt Hợp đồng lao động và áp dụng các biện pháp kỷ luật theo quy định của Pháp luật hiện hành và theo nội quy của Công ty trong thời gian hợp đồng còn giá trị.</li>
+    <li>Tạm hoãn, chấm dứt Hợp đồng, kỷ luật người lao động theo đúng quy định của Pháp luật, và nội quy lao động của Công ty.</li>
+    <li>Có quyền đòi bồi thường, khiếu nại với cơ quan liên đới để bảo vệ quyền lợi của mình nếu người lao động vi phạm Pháp luật hay các điều khoản của hợp đồng này.</li>
+  </ol>
+
+  <h3>Điều 5: Đơn phương chấm dứt hợp đồng:</h3>
+
+  <h4>1. Người sử dụng lao động</h4>
+
+  <ol style="list-style: lower-alpha;">
+    <li>Theo quy định tại điều 38 Bộ luật Lao động thì người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong những trường hợp sau đây:</li>
+    <li>Người lao động thường xuyên không hoàn thành công việc theo hợp đồng.</li>
+    <li>Người lao động bị xử lý kỷ luật sa thải theo quy định tại điều 85 của Bộ luật Lao động.</li>
+    <li>Người lao động làm theo hợp đồng lao động không xác định thời hạn ốm đau đã điều trị 12 tháng liền, người lao động làm theo hợp đồng lao động xác định thời hạn ốm đau đã điều trị 06 tháng liền và người lao động làm theo hợp đồng lao động dưới 01 năm ốm đau đã điều trị quá nửa thời hạn hợp đồng, mà khả năng lao động chưa hồi phục. Khi sức khoẻ của người lao động bình phục, thì được xem xét để giao kết tiếp hợp đồng lao động.</li>
+    <li>Do thiên tai, hỏa hoạn, hoặc những lý do bất khả kháng khác mà người sử dụng lao động đã tìm mọi biện pháp khắc phục nhưng vẫn buộc phải thu hẹp sản xuất, giảm chỗ làm việc.</li>
+    <li>Doanh nghiệp, cơ quan, tổ chức chấm dứt hoạt động.</li>
+    <li>Người lao động vi phạm kỷ luật mức sa thải.</li>
+    <li>Người lao động có hành vi gây thiệt hại nghiêm trọng về tài sản và lợi ích của Công ty.</li>
+    <li>Người lao động đang thi hành kỷ luật mức chuyển công tác mà tái phạm.</li>
+    <li>Người lao động tự ý bỏ việc 5 ngày/1 tháng và 20 ngày/1 năm.</li>
+    <li>Người lao động vi phạm Pháp luật Nhà nước.</li>
+  </ol>
+
+  <h4>2. Người lao động</h4>
+
+  <ol style="list-style: lower-alpha;">
+    <li>Khi người lao động đơn phương chấm dứt Hợp đồng lao động trước thời hạn phải tuân thủ theo điều 37 Bộ luật Lao động và phải dựa trên các căn cứ sau:</li>
+    <li>Không được bố trí theo đúng công việc, địa điểm làm việc hoặc không được bảo đảm các điều kiện làm việc đã thỏa thuận trong hợp đồng.</li>
+    <li>Không được trả công đầy đủ hoặc trả công không đúng thời hạn đã thoả thuận trong hợp đồng.</li>
+    <li>Bị ngược đãi, bị cưỡng bức lao động.</li>
+    <li>Bản thân hoặc gia đình thật sự có hoàn cảnh khó khăn không thể tiếp tục thực hiện hợp đồng.</li>
+  </ol>
+
+  <h3>Điều 6: Những thỏa thuận khác</h3>
+
+  <p>Trong quá trình thực hiện hợp đồng nếu một bên có nhu cầu thay đổi nội dung trong hợp đồng phải báo cho bên kia trước ít nhất 03 ngày và ký kết bản Phụ lục hợp đồng theo quy định của Pháp luật. Trong thời gian tiến hành thỏa thuận hai bên vẫn tuân theo hợp đồng lao động đã ký kết.
+
+    Người lao động đọc kỹ, hiểu rõ và cam kết thực hiện các điều khoản và quy định ghi tại Hợp đồng lao động.</p>
+
+  <h3>Điều 7: Điều khoản thi hành</h3>
+
+  <p>Những vấn đề về lao động không ghi trong Hợp đồng lao động này thì áp dụng theo quy định của Thỏa ước tập thể, nội quy lao động và Pháp luật lao động.
+
+    Khi hai bên ký kết Phụ lục hợp đồng lao động thì nội dung của Phụ lục hợp đồng lao động cũng có giá trị như các nội dung của bản hợp đồng này.
+
+    Hợp đồng này được lập thành 02 (hai) bản có giá trị như nhau, Hành chính nhân sự giữ 01 (một) bản, Người lao động giữ 01 (một) bản và có hiệu lực kể từ ngày … tháng … năm 20...</p>
+  </div>

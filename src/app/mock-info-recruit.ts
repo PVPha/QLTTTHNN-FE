@@ -1,0 +1,23 @@
+import { InfoRecruit } from "./info-recruit";
+export const MockInfoRecruit: InfoRecruit[] =  [
+  {ID: 1, id_recruit: 1, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3, time: '2021-06-30', location: 'HCM',benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 2, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3, time: '2021-06-30', location: 'HCM',benefit: 'lương thưởng tốt', approval: false},
+  {ID: 1, id_recruit: 3, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3, time: '2021-06-30', location: 'HCM',benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 4, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3, time: '2021-06-30', location: 'HCM',benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 5, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3, time: '2021-06-30', location: 'HCM',benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 6, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3, time: '2021-06-30', location: 'HCM',benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 7, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3, time: '2021-06-30', location: 'HCM',benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 8, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3, time: '2021-06-30', location: 'HCM',benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 9, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3, time: '2021-06-30', location: 'HCM',benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 10, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 11, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 12, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 13, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 14, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 15, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 16, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 17, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 18, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 19, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+  {ID: 1, id_recruit: 20, department: 'IT', position: 'frontend', require: 'HTML, CSS, JS', describe: 'làm giao diện web', amount: 3,time: '2021-06-30', location: 'HCM', benefit: 'lương thưởng tốt', approval: true},
+]

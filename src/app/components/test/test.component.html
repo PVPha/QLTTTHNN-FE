@@ -1,0 +1,227 @@
+<!-- <div class="container">
+
+
+
+  <form method="dialog">
+
+
+  <textarea id="textArea">
+    <p><img style="display: block; margin-left: auto; margin-right: auto;" title="Tiny Logo" src="https://www.tiny.cloud/labs/android-chrome-256x256.png" alt="TinyMCE Logo" width="128" height="128" /></p>
+    <span><h1>test</h1></span>
+    <span>sdf</span>
+    <table style="border-collapse: collapse; width: 100%;" border="1">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Cost</th>
+          <th>Really?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="test">TinyMCE</td>
+          <td class="test">Free</td>
+          <td class="test">YES!</td>
+        </tr>
+        <tr>
+          <td class="test">Plupload</td>
+          <td class="test">Free</td>
+          <td class="test">YES!</td>
+        </tr>
+      </tbody>
+    </table>
+  </textarea>
+
+
+
+  <button type="submit" id="submit" class="btn btn-primary" onclick="getVal()" (click)="onClick()">Submit</button>
+  </form>
+
+  <div id="editorArea">
+
+  </div>
+
+  </div>
+
+
+  <editor
+    apikey="g070n42f1h0won3aaevgw9ufk4jtqb0f1tixpqvg5ibpk9p1"
+    [(ngModel)]="html"
+      id="testEditor"
+     [init]="{
+       height: 500,
+       menubar: false,
+       plugins: [
+         'advlist autolink lists link image charmap print preview anchor',
+         'searchreplace visualblocks code fullscreen',
+         'insertdatetime media table paste code help wordcount'
+       ],
+       toolbar:
+         'undo redo | formatselect | bold italic backcolor | \
+         alignleft aligncenter alignright alignjustify | \
+         bullist numlist outdent indent | removeformat | help'
+     }"
+   >
+  </editor>
+
+   <button onclick="setContent()" class="btn btn-primary">set content</button>
+   <button onclick="getContent()" class="btn btn-primary">get content</button>
+
+   <div id="getContentArea">
+
+   </div>
+   <div id="contentEditor" style="display: none;">
+    <table style="border-collapse: collapse; width: 100%;" border="1">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Cost</th>
+          <th>Really?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="test">TinyMCE</td>
+          <td class="test">Free</td>
+          <td class="test">YES!</td>
+        </tr>
+        <tr>
+          <td class="test">Plupload</td>
+          <td class="test">Free</td>
+          <td class="test">YES!</td>
+        </tr>
+      </tbody>
+    </table>
+   </div> -->
+
+<!--
+   <input type="text"  #test>
+   <input type="text" #test2>
+   <input type="file" [formControl]="file" (change)="fileChange($event)">
+   <button (click)="onSend(test.value,test2.value)">submit</button>
+
+    <input type="text" #test [(ngModel)]="respon">
+   <input type="text" [value]="respon">
+   <input style="display: none;" type="text" [value]="test.value | date:'yyyy-MM-dd' " name="" id="">
+   <button type="submit" (click)="onSubmit(test.value)">
+     Save
+   </button>
+
+   {{respon}}
+
+
+   <img src="{{img}}" alt=""> -->
+
+<!-- <ul>
+     <li *ngFor="let test of tests" >{{test.text}}</li>
+   </ul>
+
+  <ul *ngFor="let gwi of GWI">
+    <li>{{gwi.ID}}</li>
+    <li>{{gwi.value}}</li>
+    <li>{{gwi.approval}}</li>
+  </ul> -->
+
+<!-- <h2>File Upload & Image Preview</h2>
+<p class="lead">No Plugins <b>Just Javascript</b></p> -->
+
+<!-- Upload  -->
+<!-- <form id="file-upload-form" class="uploader">
+  <input id="file-upload" type="file" name="fileUpload" accept=".xls, .xlsx" (change)="fileUpload($event)" />
+
+  <label for="file-upload" id="file-drag">
+    <img id="file-image" src="#" alt="Preview" class="hidden">
+    <div id="start">
+      <i class="fa fa-download" aria-hidden="true"></i>
+      <div>Select a file or drag here</div>
+      <div id="notimage" class="hidden">Please select an image</div>
+      <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+    </div>
+    <div id="response" class="hidden">
+      <div id="messages"></div>
+      <progress class="progress" id="file-progress" value="0">
+        <span>0</span>%
+      </progress>
+    </div>
+  </label>
+  <button type="submit" (click)="submitXlSX()">
+    Save
+  </button>
+</form>
+<div>
+  <pre>
+    {{convertJson}}
+  </pre>
+</div> -->
+
+<div class="container">
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row justify-content-center">
+            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+            <div class="col-lg-6">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                </div>
+                <form class="user">
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      class="form-control form-control-user"
+                      id="exampleInputEmail"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter Email Address..."
+                      #userName
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control form-control-user"
+                      id="exampleInputPassword"
+                      placeholder="Password"
+                      #passWord
+                    />
+                  </div>
+                  <!-- <div class="form-group">
+                                      <div class="custom-control custom-checkbox small">
+                                          <input type="checkbox" class="custom-control-input" id="customCheck">
+                                          <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                      </div>
+                                  </div> -->
+                  <button
+                    class="btn btn-primary btn-user btn-block"
+                    (click)="login(userName.value, passWord.value)"
+                  >
+                    Login
+                  </button>
+                  <hr />
+                  <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
+                                      <i class="fab fa-google fa-fw"></i> Login with Google
+                                  </a>
+                                  <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                  </a> -->
+                </form>
+                <hr />
+                <!-- <div class="text-center">
+                                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                              </div>
+                              <div class="text-center">
+                                  <a class="small" href="register.html">Create an Account!</a>
+                              </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button (click)="getItems()">click</button>

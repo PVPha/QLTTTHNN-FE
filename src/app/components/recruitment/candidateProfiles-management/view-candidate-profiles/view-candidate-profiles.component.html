@@ -1,0 +1,181 @@
+<div class="container">
+  <div class="title mb-2">
+    <mat-card-header>Danh sách hồ sơ ứng viên</mat-card-header>
+  </div>
+  <!-- <mat-form-field appearance="standard">
+    <mat-label>Tìm kiếm</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+  </mat-form-field> -->
+  <form
+    class="
+      d-none d-sm-inline-block
+      form-inline
+      mr-auto
+      ml-md-3
+      my-2 my-md-0
+      mw-100
+      navbar-search
+    "
+  >
+    <div class="input-group mb-2">
+      <input
+        type="text"
+        class="form-control bg-light border-0 small"
+        placeholder="Tìm kiếm..."
+        aria-label="Search"
+        aria-describedby="basic-addon2"
+        matInput
+        (keyup)="applyFilter($event)"
+        #input
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-primary pt-2"
+          style="background-color: #4e73df; border-color: #4e73df"
+          type="button"
+        >
+          <i class="fas fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id_candidate" sticky>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã hồ sơ</th>
+        <td mat-cell *matCellDef="let element">{{ element.id_candidate }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fullName">
+        <th mat-header-cell *matHeaderCellDef>Họ tên</th>
+        <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sex">
+        <th mat-header-cell *matHeaderCellDef>Giới tính</th>
+        <td mat-cell *matCellDef="let element">{{ element.sex }}</td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="dateOfBirth">
+        <th mat-header-cell *matHeaderCellDef> Ngày sinh </th>
+        <td mat-cell *matCellDef="let element"> {{element.dayOfBirth}} </td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef>Số điện thoại</th>
+        <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>vị trí ứng tuyển</th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="exp">
+        <th mat-header-cell *matHeaderCellDef> Kinh nghiệm </th>
+        <td mat-cell *matCellDef="let element" > {{element.exp}} </td>
+      </ng-container> -->
+
+      <!-- <ng-container matColumnDef="skill">
+        <th mat-header-cell *matHeaderCellDef> Kỹ năng </th>
+        <td mat-cell *matCellDef="let element" > {{element.skill}} </td>
+      </ng-container> -->
+
+      <!-- <ng-container matColumnDef="education">
+        <th mat-header-cell *matHeaderCellDef> Học vấn </th>
+        <td mat-cell *matCellDef="let element" > {{element.education}} </td>
+      </ng-container> -->
+
+      <!-- <ng-container matColumnDef="languageSkill">
+        <th mat-header-cell *matHeaderCellDef> trình độ ngoại ngữ </th>
+        <td mat-cell *matCellDef="let element" > {{element.languageSkill}} </td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>hành động</th>
+        <td mat-cell *matCellDef="let element; let index = index">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button
+              mat-menu-item
+              mat-raised-button
+              (click)="
+                openDialogDetailProfile(element.ID, pageIndex, index, pageSize)
+              "
+            >
+              <mat-icon>open_in_new</mat-icon>
+              <span>chi tiết</span>
+            </button>
+            <!-- <button mat-menu-item [disabled]="element.status == 'từ chối' ? true : false" (click)="showIndex(pageIndex, index, pageSize)">
+              <mat-icon>done</mat-icon>
+              <span>duyệt</span>
+            </button>
+            <button mat-menu-item  [disabled]="element.status == 'duyệt' ? true : false">
+              <mat-icon>clear</mat-icon>
+              <span>từ chối</span>
+            </button> -->
+            <button
+              mat-menu-item
+              mat-raised-button
+              [disabled]="element.status == 'chờ' ? false : true"
+              (click)="
+                openDialogInterviewSchedule(
+                  element.ID,
+                  pageIndex,
+                  index,
+                  pageSize
+                )
+              "
+            >
+              <mat-icon>alarm_add</mat-icon>
+              <span>hẹn phỏng vấn</span>
+            </button>
+            <button
+              mat-menu-item
+              mat-raised-button
+              [disabled]="element.status == 'duyệt' ? false : true"
+              (click)="
+                openDialogHiringDecision(element.ID, pageIndex, index, pageSize)
+              "
+            >
+              <mat-icon>assignment_ind</mat-icon>
+              <span>lập quyết định tuyển dụng</span>
+            </button>
+            <!-- <button mat-menu-item mat-raised-button [routerLink]="['/add-staffProfile/'+ element.ID]" routerLinkActive="router-link-active" >
+              <mat-icon>assignment_ind</mat-icon>
+              <span>Nhập hồ sơ nhân viên</span>
+            </button> -->
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">không tìm thấy "{{ input.value }}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      (page)="getPageIndex($event)"
+      [pageSizeOptions]="[5, 10, 20]"
+    ></mat-paginator>
+    <!--showFirstLastButtons-->
+  </div>
+</div>

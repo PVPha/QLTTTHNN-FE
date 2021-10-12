@@ -1,0 +1,74 @@
+<h1 mat-dialog-title>Quyết định bổ nhiệm </h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Số quyết định</mat-label>
+          <input matInput value="{{id_decision_temp}}" #id_decision>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput value="{{data.position}}" #position>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input matInput value="{{data.department}}" #department>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí được bổ nhiệm</mat-label>
+          <input matInput value="" #pos_appoint>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận được bổ nhiệm</mat-label>
+          <input matInput value="" #dep_appoint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Ngày lập quyết định</mat-label>
+          <input matInput [matDatepicker]="picker" #timePicker>
+          <input type="text" style="display: none;" value="{{timePicker.value|date:'yyyy-MM-dd'}}" #time>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" matDialogClose (click)="onSubmit(id_decision.value, id_staff.value, fullName.value, position.value, department.value, pos_appoint.value, dep_appoint.value, time.value)">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+

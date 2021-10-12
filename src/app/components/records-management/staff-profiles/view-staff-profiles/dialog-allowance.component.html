@@ -1,0 +1,149 @@
+<h1 mat-dialog-title>Phụ cấp</h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Số quyết định</mat-label>
+          <input matInput value="{{id_decision_temp}}" #id_decision>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput value="{{data.position}}" #position>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input matInput value="{{data.department}}" #department>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Ngày lập quyết định</mat-label>
+          <input matInput [matDatepicker]="picker" #timePicker>
+          <input type="text" style="display: none;" value="{{timePicker.value |date: 'yyyy-MM-dd'}}" #time>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('allowance', 'allowanceEditor'), getContent('allowanceTextArea')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Các khoản phụ cấp
+            </mat-panel-title>
+            <mat-panel-description>
+              nội dung các khoản phụ cấp
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea style="display: none;" id="allowanceTextArea" #content_allowance></textarea>
+          <editor
+            id="allowanceEditor"
+            onmouseout=" setTimeout(getContent('allowanceTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('subsidy', 'subsidyEditor'), getContent('subsidyTextArea')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Các khoản trợ cấp
+            </mat-panel-title>
+            <mat-panel-description>
+              nội dung các khoản trợ cấp
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea style="display: none;" id="subsidyTextArea" #content_subsidy></textarea>
+          <editor
+            id="subsidyEditor"
+            onmouseout=" setTimeout(getContent('subsidyTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" matDialogClose (click)="onSubmitAllowance(id_decision.value, id_staff.value, fullName.value, position.value, department.value, time.value, content_allowance.value, content_subsidy.value )">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="allowance" style="display: none;">
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>khoản phụ cấp</th>
+        <th>mức phụ cấp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="subsidy" style="display: none;">
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>khoản trợ cấp</th>
+        <th>mức giảm trừ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+.title{
+  font-size: 20px;
+}
+table{
+  width: 100%;
+}
+button{
+  border: none;
+  background-color: transparent;
+}
+
+.demo-style{
+  background-color: red;
+}
+
+.demo-row-is-clicked {
+
+  display: none;
+}

@@ -1,0 +1,191 @@
+
+<div class="container">
+  <div class="title">
+    <mat-card-header>YÊU CẦU TUYỂN DỤNG</mat-card-header>
+    <!-- <mat-card-header>{{respon}}</mat-card-header> -->
+  </div>
+  <form class="form" >
+    <div class="row">
+      <div class="col-2 ">
+        <mat-form-field>
+          <mat-label>Mã yêu cầu</mat-label>
+          <!-- <mat-label>{{id_recruit}}</mat-label> -->
+          <input type="text" matInput #id_recruit >
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input type="text" matInput #department >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input type="text" matInput #position >
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <mat-label>Số lượng</mat-label>
+          <input type="number" matInput #amount >
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field >
+          <mat-label>thời gian</mat-label>
+          <input matInput [matDatepicker]="picker" #timePicker>
+          <input style="display: none;" type="text" #time value="{{timePicker.value|date:'yyyy-MM-dd'}}">
+          <!-- <span style="display: none;" #time >{{timePicker.value | date:'yyyy-MM-dd'}}</span> -->
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Địa điểm</mat-label>
+          <input matInput #location>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" style="display: none;">
+      <div class="col">
+        <mat-label>Yêu cầu</mat-label>
+        <mat-form-field>
+          <textarea id="requireTextArea" matInput rows="5" #require>
+          </textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle  onclick="setContent('require', 'editorRequire')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Yêu cầu
+            </mat-panel-title>
+            <mat-panel-description>
+              Yều cầu tuyển dụng
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <editor
+            id="editorRequire"
+            onmouseout=" setTimeout(getContent('requireTextArea'),10000)"
+            [init]="{
+              height: 250,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+            }"
+          >
+
+          </editor>
+
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row" style="display: none;">
+      <div class="col">
+        <mat-label>Mô tả công việc</mat-label>
+        <mat-form-field>
+          <textarea id="describeTextArea" matInput rows="5" #describe ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('describe', 'editorDescribe')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Mô tả
+            </mat-panel-title>
+            <mat-panel-description>
+              Mô tả công việc
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <!-- <app-view-interview-schedule></app-view-interview-schedule> -->
+        <!-- <textarea name="" id="contract"  rows="20" matInput > -->
+          <editor
+            id="editorDescribe"
+            onmouseout=" setTimeout(getContent('describeTextArea'),10000)"
+            [init]="{
+              height: 250,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+            }"
+          >
+
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row" style="display: none;">
+      <div class="col">
+        <mat-label>Quyền lợi</mat-label>
+        <mat-form-field>
+          <textarea id="benefitTextArea" matInput rows="5" #benefit ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('benefit', 'editorBenefit')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Quyền lợi
+            </mat-panel-title>
+            <mat-panel-description>
+              quyền lợi khi làm việc
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <editor
+            id="editorBenefit"
+            onmouseout=" setTimeout(getContent('benefitTextArea'),10000)"
+            [init]="{
+              height: 250,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+            }"
+          >
+
+        </editor>
+        <!-- </textarea> -->
+        </mat-expansion-panel>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ml-auto mr-auto mb-3 mt-3">
+        <button type="submit" class="btn btn-danger" (click)="onSubmit(id_recruit.value, department.value, position.value, require.value, describe.value, amount.value, time.value, location.value, benefit.value)" [routerLink]="['/view-recruit']" routerLinkActive="router-link-active" >Tạo yêu cầu </button>
+      </div>
+    </div>
+  </form>
+</div>

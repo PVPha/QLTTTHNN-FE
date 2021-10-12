@@ -1,0 +1,123 @@
+<h1 mat-dialog-title>Quyết định khen thưởng </h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Số quyết định</mat-label>
+          <input matInput value="{{id_decision_temp}}" #id_decision>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput value="{{data.position}}" #position>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input matInput value="{{data.department}}" #department>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Ngày lập quyết định</mat-label>
+          <input matInput [matDatepicker]="picker" #timePicker>
+          <input type="text" style="display: none;" value="{{timePicker.value|date: 'yyyy-MM-dd'}}" #time>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Số tiền thưởng</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0"  #money>
+          <span matSuffix>VNĐ</span>
+        </mat-form-field>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('reward', 'rewardEditor'), getContent('rewardTextArea')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Các khoản khen thưởng
+            </mat-panel-title>
+            <mat-panel-description>
+              nội dung chi tiết khen thưởng
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea style="display: none;" id="rewardTextArea" #content></textarea>
+          <editor
+            id="rewardEditor"
+            onmouseout=" setTimeout(getContent('rewardTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" matDialogClose (click)="onSubmit(id_decision.value, id_staff.value, fullName.value, position.value, department.value, time.value, content.value)">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="reward" style="display: none;">
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>khoản thưởng</th>
+        <th>lý do khen thưởng</th>
+        <th>mức thưởng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="contentWork" style="display: none;">
+  <h3>nội dung công việc</h3>
+</div>
+
+<div id="dedication" style="display: none;">
+  <ul>
+    <li>cống hiến 1</li>
+    <li>thành tích 1</li>
+  </ul>
+</div>

@@ -1,0 +1,145 @@
+<h1 mat-dialog-title>Quản lý bằng cấp chứng chỉ</h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã hồ sơ</mat-label>
+          <input matInput value="" #id_record>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('certificate', 'certificateEditor')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Bằng cấp chứng chỉ
+            </mat-panel-title>
+            <mat-panel-description>
+              thông tin bằng cấp chứng chỉ
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea style="display: none;" id="contentTextArea" #content></textarea>
+          <editor
+            id="certificateEditor"
+            onmouseout=" setTimeout(getContent('contentTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col-6">
+        <mat-form-field appearance="fill">
+          <mat-label>thời gian thử việc</mat-label>
+          <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+          <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6 mt-2">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input type="text"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div> -->
+    <!-- <div class="row">
+      <div class="col-4">
+        <mat-form-field >
+          <mat-label>Mức lương thử việc</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0">
+          <span matPrefix>$&nbsp;</span>
+          <span matSuffix>00000</span>
+        </mat-form-field>
+      </div>
+    </div> -->
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Hình thức phỏng vấn</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let form of forms" [value]="form.form">
+          {{form.form}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Người phỏng vấn</mat-label>
+      <mat-select multiple>
+        <mat-option *ngFor="let interviewer of interviewers" [value]="interviewer.name">
+          <mat-label>{{interviewer.position}}</mat-label>
+          {{interviewer.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" matDialogClose (click)="onSubmit(id_record.value, id_staff.value, fullName.value, content.value)">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="certificate" style="display: none;">
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>Tên bằng cấp/ Chứng chỉ</th>
+        <th>Hạn sử dụng</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td >&nbsp;</td>
+        <td >&nbsp;</td>
+        <td >&nbsp;</td>
+      </tr>
+      <tr>
+        <td > &nbsp;</td>
+        <td > &nbsp;</td>
+        <td > &nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

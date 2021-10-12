@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: white;
+}
+/* .mat-form-field .mat-form-field-underline {
+  height: 0 !important;
+} */
+
+.mat-button-toggle-checked {
+  background-color: #2b74cd;
+}
+.mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+  color: rgb(255 255 255 / 87%);
+}
+.mat-menu-trigger:focus-visible {
+  border: none;
+}
+.title {
+  font-size: 20px;
+  padding: 3%;
+  border: 1px solid;
+  background-color: #4e73df;
+  color: #fefcfd;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.mat-column {
+  border-right: 1px solid currentColor;
+}
+
+footer {
+  margin-top: 5%;
+}
+.form-group .mat-form-field .mat-form-field-wrapper .mat-form-field-underline {
+  display: none !important;
+  height: 0 !important;
+  border-color: transparent;
+}

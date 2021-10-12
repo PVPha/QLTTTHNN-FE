@@ -1,0 +1,248 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Thuế TNCN</ng-template>
+<h1 mat-dialog-title>Thuế thu nhập cá nhân</h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Số quyết định</mat-label>
+          <input matInput value="{{id_decision_temp}}" #id_decision>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput value="{{data.position}}" #position>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input matInput value="{{data.department}}" #department>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Ngày lập quyết định</mat-label>
+          <input matInput [matDatepicker]="picker" #timePicker>
+          <input type="text" style="display: none;" value="{{timePicker.value |date: 'yyyy-MM-dd'}}" #time>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>thuế suất</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0"  #percent>
+          <span matSuffix>%</span>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('tax', 'disciplineEditor'), getContent('disciplineTextArea')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Các khoản giảm trừ
+            </mat-panel-title>
+            <mat-panel-description>
+              nội dung các khoản giảm trừ thuế
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea style="display: none;" id="disciplineTextArea" #content></textarea>
+          <editor
+            id="disciplineEditor"
+            onmouseout=" setTimeout(getContent('disciplineTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2"  (click)="onSubmitTax(id_decision.value, id_staff.value, fullName.value, position.value, department.value, time.value, percent.value, content.value )" matStepperNext>Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+</mat-step>
+<mat-step>
+  <ng-template matStepLabel>Bảo hiểm</ng-template>
+  <h1 mat-dialog-title>Bảo hiểm</h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Số quyết định</mat-label>
+          <input matInput value="{{id_decision_temp}}" #id_decision_i>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã bảo hiểm</mat-label>
+          <input matInput value="" #id_insurance>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã nhân viên</mat-label>
+          <input matInput value="{{data.id_staff}}" #id_staff>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên nhân viên</mat-label>
+          <input matInput value="{{data.fullName}}" #fullName>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Vị trí</mat-label>
+          <input matInput value="{{data.position}}" #position>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Bộ phận</mat-label>
+          <input matInput value="{{data.department}}" #department>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <div class="col-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Ngày lập quyết định</mat-label>
+          <input matInput [matDatepicker]="picker" #timePicker>
+          <input type="text" style="display: none;" value="{{timePicker.value |date: 'yyyy-MM-dd'}}" #time>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div> -->
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Thời gian tham gia</mat-label>
+          <mat-date-range-input [formGroup]="rangeContract" [rangePicker]="rangepicker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="rangepicker"></mat-datepicker-toggle>
+          <mat-date-range-picker #rangepicker></mat-date-range-picker>
+          <!-- <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error> -->
+          <!-- {{rangeContract.value | json}} -->
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field >
+          <mat-label>mức đóng bảo hiểm bắt buộc</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0"  #insurance>
+          <span matSuffix>VNĐ</span>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col">
+        <mat-expansion-panel hideToggle onclick="setContent('insurance', 'disciplineEditor'), getContent('disciplineTextArea')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Các khoản giảm trừ
+            </mat-panel-title>
+            <mat-panel-description>
+              nội dung các khoản giảm trừ thuế
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <textarea style="display: none;" id="disciplineTextArea" #content></textarea>
+          <editor
+            id="disciplineEditor"
+            onmouseout=" setTimeout(getContent('disciplineTextArea'),10000)"
+            [init]="{
+              menubar: false,
+              height: 250,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ]
+            }"
+          >
+        </editor>
+        </mat-expansion-panel>
+      </div>
+    </div> -->
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" matDialogClose (click)="onSubmitInsurance(id_insurance.value, id_decision_i.value, id_staff.value, fullName.value, position.value, department.value, rangeContract.value, insurance.value)">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</mat-step>
+</mat-horizontal-stepper>
+<div id="tax" style="display: none;">
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>khoản giảm trừ</th>
+        <th>mức giảm trừ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="insurance" style="display: none;">
+  <table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+      <tr>
+        <th>khoản giảm trừ</th>
+        <th>mức giảm trừ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Đặt công thức tính lương </h1>
+<div mat-dialog-content>
+  <form class="formDialog">
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>lương theo ngày công</mat-label>
+          <input matInput value="{{data.workDay}}" #workDay>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>lương theo KPI</mat-label>
+          <input matInput value="{{data.KPI}}" #KPI>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>lương theo doanh số</mat-label>
+          <input matInput value="{{data.sale}}" #sale>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" ml-auto mr-auto">
+        <button type="submit" class="btnForm btn btn-primary mt-2" matDialogClose (click)="onSubmit(workDay.value, KPI.value, sale.value)">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>
+
