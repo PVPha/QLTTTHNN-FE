@@ -53,30 +53,14 @@ export class ViewTableSalaryComponent implements OnInit {
     // 'overtime',
     'reward',
     'subsidy',
-    'allowance',
-    'tax',
-    'insurance',
-    'advance',
-    'discipline',
-    'kpi',
-    'sale',
-    'received',
-    'action',
-  ];
-  displayedColumnsSales: string[] = [
-    'fullname',
-    'setSales',
-    'achieveSales',
-    'missingSales',
-    'exceedSales',
-    'action',
-  ];
-  displayedColumnsKPI: string[] = [
-    'fullname',
-    'position',
-    'setKPI',
-    'achieveKPI',
-    'classification',
+    // 'allowance',
+    // 'tax',
+    // 'insurance',
+    // 'advance',
+    // 'discipline',
+    // 'kpi',
+    // 'sale',
+    // 'received',
     'action',
   ];
 
@@ -264,7 +248,7 @@ export class DialogIncreaseSalary {
     department: string,
     time: string,
     current: string,
-    increase: string,
+    // increase: string,
     content: string
   ) {
     const data = {
@@ -275,7 +259,7 @@ export class DialogIncreaseSalary {
       department: department,
       time: time,
       current: current,
-      increase: increase,
+      // increase: increase,
       content: content,
     };
     const toJson = JSON.stringify(data);

@@ -18,6 +18,7 @@ import { ViewListStaffParticipateComponent } from './components/training-managem
 import { ViewListTrainingComponent } from './components/training-management/training/view-list-training/view-list-training.component';
 import { ListDatabaseComponent } from './components/users/list-database/list-database.component';
 import { LoginComponent } from './components/users/login/login.component';
+import { AddTKBComponent } from './components/salary-management/addTKB/addTKB.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -95,6 +96,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'user', component: ListDatabaseComponent, canActivate: [AuthGuard] },
+  {
+    path: 'addTKB',
+    component: AddTKBComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

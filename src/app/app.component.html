@@ -15,7 +15,7 @@
         <i class="fab fa-hackerrank"></i>
         <!-- <i class="fas fa-h-square"></i> -->
       </div>
-      <div class="sidebar-brand-text mx-3">HRM</div>
+      <div class="sidebar-brand-text mx-3">Trung tâm tin học HRM</div>
     </a>
 
     <!-- Divider -->
@@ -37,7 +37,7 @@
     <hr class="sidebar-divider" />
 
     <!-- Heading -->
-    <div class="sidebar-heading">Quản lý tuyển dụng</div>
+    <div class="sidebar-heading">Quản lý học viên</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -51,7 +51,7 @@
       >
         <!-- <i class="fas fa-fw fa-cog"></i> -->
         <i class="fas fa-user-plus"></i>
-        <span>tuyển dụng</span>
+        <span>Chi tiết</span>
       </a>
       <div
         id="collapseTwo"
@@ -65,25 +65,19 @@
             class="collapse-item"
             [routerLink]="['/add-recruit']"
             routerLinkActive="router-link-active"
-            >nhập yêu cầu tuyển dụng</a
+            >Đăng kí học viên</a
           >
           <a
             class="collapse-item"
             [routerLink]="['/view-recruit']"
             routerLinkActive="router-link-active"
-            >Danh sách tuyển dụng</a
-          >
-          <a
-            class="collapse-item"
-            [routerLink]="['/add-candidateProfile']"
-            routerLinkActive="router-link-active"
-            >Nhập hồ sơ ứng viên</a
+            >Danh sách học viên</a
           >
           <a
             class="collapse-item"
             [routerLink]="['/view-candidateProfile']"
             routerLinkActive="router-link-active"
-            >Danh sách ứng viên
+            >Học phí
           </a>
         </div>
       </div>
@@ -112,7 +106,8 @@
     <hr class="sidebar-divider" />
 
     <!-- Heading -->
-    <div class="sidebar-heading">Quản lý Hồ sơ</div>
+    <div class="sidebar-heading">Quản lý giảng viên</div>
+
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -126,7 +121,7 @@
       >
         <!-- <i class="fas fa-fw fa-cog"></i> -->
         <i class="fas fa-user-tag"></i>
-        <span>Hồ sơ</span>
+        <span>Hồ sơ chi tiết</span>
       </a>
       <div
         id="collapseThree"
@@ -135,14 +130,21 @@
         data-parent="#accordionSidebar"
       >
         <div class="bg-white py-2 collapse-inner rounded">
+          <a
+            class="collapse-item"
+            [routerLink]="['/add-candidateProfile']"
+            routerLinkActive="router-link-active"
+            >Thêm giảng viên</a
+          >
           <!-- <h6 class="collapse-header">Custom Components:</h6> -->
           <!-- <a class="collapse-item" [routerLink]="['/add-staffProfile']" routerLinkActive="router-link-active" >Nhập hồ nhân viên</a> -->
           <a
             class="collapse-item"
             [routerLink]="['/view-staffProfile']"
             routerLinkActive="router-link-active"
-            >Danh sách nhân viên</a
+            >Danh sách giảng viên</a
           >
+
         </div>
       </div>
     </li>
@@ -151,7 +153,7 @@
     <hr class="sidebar-divider" />
 
     <!-- Heading -->
-    <div class="sidebar-heading">Quản lý đào tạo</div>
+    <div class="sidebar-heading">Quản lý khóa học</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -165,7 +167,7 @@
       >
         <!-- <i class="fas fa-fw fa-cog"></i> -->
         <i class="fas fa-user-graduate"></i>
-        <span>Đào tạo</span>
+        <span>Khóa học</span>
       </a>
       <div
         id="collapseFour"
@@ -179,13 +181,13 @@
             class="collapse-item"
             [routerLink]="['/add-training']"
             routerLinkActive="router-link-active"
-            >Thêm khóa đào tạo</a
+            >Thêm khóa học</a
           >
           <a
             class="collapse-item"
             [routerLink]="['/view-training']"
             routerLinkActive="router-link-active"
-            >Danh sách khóa đạo tạo</a
+            >Danh sách khóa học</a
           >
           <!-- <a class="collapse-item" [routerLink]="['/view-staffParticipate']" routerLinkActive="router-link-active" >Danh sách tham gia</a> -->
         </div>
@@ -196,7 +198,7 @@
     <hr class="sidebar-divider" />
 
     <!-- Heading -->
-    <div class="sidebar-heading">Quản lý chấm công</div>
+    <div class="sidebar-heading">Quản lý tư thiết bị</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -210,7 +212,7 @@
       >
         <!-- <i class="fas fa-fw fa-cog"></i> -->
         <i class="fas fa-user-clock"></i>
-        <span>Chấm công</span>
+        <span>Bảng tư thiết bị</span>
       </a>
       <div
         id="collapseFive"
@@ -224,7 +226,7 @@
             class="collapse-item"
             [routerLink]="['/view-timekeeping']"
             routerLinkActive="router-link-active"
-            >Bảng chấm công</a
+            >Danh sách tư thiết bị</a
           >
         </div>
       </div>
@@ -234,7 +236,7 @@
     <hr class="sidebar-divider" />
 
     <!-- Heading -->
-    <div class="sidebar-heading">Quản lý lương</div>
+    <div class="sidebar-heading">Quản lí thời khóa biểu</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -247,8 +249,8 @@
         aria-controls="collapsePages"
       >
         <!-- <i class="fas fa-fw fa-folder"></i> -->
-        <i class="fas fa-user-edit"></i>
-        <span>Tính lương</span>
+        <i class="fas fa-user-edit">Thời khóa biểu</i>
+        <span></span>
       </a>
       <div
         id="collapsePages"
@@ -259,9 +261,15 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <a
             class="collapse-item"
+            [routerLink]="['/addTKB']"
+            routerLinkActive="router-link-active"
+            >Thêm thời khóa biểu</a
+          >
+          <a
+            class="collapse-item"
             [routerLink]="['/view-salary']"
             routerLinkActive="router-link-active"
-            >bảng lương</a
+            >Chi tiết</a
           >
         </div>
       </div>

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 mat-dialog-title>Chi tiết khóa đào tạo</h1>
+  <h1 mat-dialog-title>Cập nhật khóa đào tạo</h1>
 <form class="form formDialog">
   <div class="row justify-content-center">
     <div class="col-3">
@@ -18,7 +18,7 @@
   <div class="row justify-content-center">
     <div class="col-6">
       <mat-form-field>
-        <mat-label>Thời gian đào tạo</mat-label>
+        <mat-label>Thời gian khóa học</mat-label>
         <mat-date-range-input [formGroup]="range" [rangePicker]="rangepicker">
           <input matStartDate formControlName="start"  placeholder="{{time.start}}">
           <input matEndDate formControlName="end" placeholder="{{time.end}}">
@@ -35,7 +35,7 @@
   <div class="row justify-content-center">
     <div class="col-6">
       <mat-form-field>
-        <mat-label>Địa điểm</mat-label>
+        <mat-label>Loại khóa học</mat-label>
         <input matInput value="{{data.location}}" #location>
       </mat-form-field>
     </div>
@@ -43,7 +43,15 @@
   <div class="row justify-content-center">
     <div class="col-6">
       <mat-form-field>
-        <mat-label>Người đào tạo</mat-label>
+        <mat-label>Học phí</mat-label>
+        <input matInput value="{{data.location}}" #location>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Giảng viên</mat-label>
         <input matInput value="{{data.trainers}}" #trainers>
       </mat-form-field>
     </div>

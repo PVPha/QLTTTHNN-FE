@@ -1,6 +1,6 @@
 <div class="container">
   <div class="title mb-2">
-    <mat-card-header>Danh sách yêu cầu tuyển dụng</mat-card-header>
+    <mat-card-header>Danh sách học viên</mat-card-header>
   </div>
   <!-- <mat-form-field appearance="standard">
     <mat-label>Tìm kiếm</mat-label>
@@ -43,19 +43,19 @@
     <table mat-table [dataSource]="dataSource" matSort>
       <!-- Position Column -->
       <ng-container matColumnDef="ID">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã yêu cầu</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã học viên</th>
         <td mat-cell *matCellDef="let element">{{ element.id_recruit }}</td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="department">
-        <th mat-header-cell *matHeaderCellDef>Bộ phận</th>
+        <th mat-header-cell *matHeaderCellDef>Tên học viên</th>
         <td mat-cell *matCellDef="let element">{{ element.department }}</td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Vị trí</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Khóa học tham gia</th>
         <td mat-cell *matCellDef="let element">{{ element.position }}</td>
       </ng-container>
 
@@ -70,7 +70,7 @@
       </ng-container> -->
 
       <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef>Số lượng</th>
+        <th mat-header-cell *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
       </ng-container>
 
@@ -80,13 +80,14 @@
       </ng-container> -->
 
       <ng-container matColumnDef="approval">
-        <th mat-header-cell *matHeaderCellDef>xét duyệt</th>
+        <th mat-header-cell *matHeaderCellDef>Số điện thoại</th>
         <td mat-cell *matCellDef="let element">
-          <mat-icon class="iconApproval">{{
+          <!-- <mat-icon class="iconApproval">{{
             element.approval == 1 ? "done_all" : "clear"
-          }}</mat-icon>
+          }}</mat-icon> -->
         </td>
       </ng-container>
+
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>hành động</th>
@@ -108,7 +109,7 @@
               <mat-icon>open_in_new</mat-icon>
               <span>chi tiết</span>
             </button>
-            <button
+            <!-- <button
               mat-menu-item
               (click)="approval(element.ID, 1, i, pageIndex, pageSize)"
               [disabled]="element.status == 'từ chối' ? true : false"
@@ -123,14 +124,14 @@
             >
               <mat-icon>clear</mat-icon>
               <span>từ chối</span>
-            </button>
+            </button> -->
             <button
               mat-menu-item
               mat-raised-button
               (click)="delete(element.ID, i, pageIndex, pageSize)"
             >
               <mat-icon>delete_outline</mat-icon>
-              <span>xóa yêu cầu</span>
+              <span>Xóa học viên</span>
             </button>
             <!-- <button mat-menu-item mat-raised-button [routerLink]="['/add-staffProfile']" routerLinkActive="router-link-active" >
               <mat-icon>assignment_ind</mat-icon>

@@ -53,23 +53,23 @@ export class AddRecruitComponent implements OnInit {
     id_recruit: string,
     department: string,
     position: string,
-    require: string,
-    describe: string,
+    // require: string,
+    // describe: string,
     amount: string,
-    time: string,
-    location: string,
-    benefit: string
+    // time: string,
+    // location: string,
+    // benefit: string
   ) {
     const newRecruitment = {
       id_recruit: id_recruit,
       department: department,
       position: position,
-      require: require,
-      describe: describe,
+      // require: require,
+      // describe: describe,
       amount: amount,
-      time: time,
-      location: location,
-      benefit: benefit,
+      // time: time,
+      // location: location,
+      // benefit: benefit,
       approval: false,
     };
     const toJson = JSON.stringify(newRecruitment);

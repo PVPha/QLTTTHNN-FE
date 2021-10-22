@@ -28,15 +28,15 @@ export class RequestApiService {
 
   // start recruitment
   getRecruitment =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/recruitment/getData';
+    'http://localhost:81/HRM-BE/recruitment/getData';
   insertRecruitment =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/recruitment/insertData';
+    'http://localhost:81/HRM-BE/recruitment/insertData';
   deleteRecruitment =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/recruitment/deleteData';
+    'http://localhost:81/HRM-BE/recruitment/deleteData';
   updateRecruitmentApi =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/recruitment/updateData';
+    'http://localhost:81/HRM-BE/recruitment/updateData';
   getRecruitmentById =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/recruitment/getDataById/';
+    'http://localhost:81/HRM-BE/recruitment/getDataById/';
 
   insertDataRecruitment(formData: FormData): Observable<any> {
     return this.http.post<any>(this.insertRecruitment, formData);
@@ -70,11 +70,11 @@ export class RequestApiService {
 
   // start candidate
   getCandidate =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/candidate/getData';
+    'http://localhost:81/HRM-BE/candidate/getData';
   getCandidateByID =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/candidate/getDataById/';
+    'http://localhost:81/HRM-BE/candidate/getDataById/';
   insertCandidate =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/candidate/insertData';
+    'http://localhost:81/HRM-BE/candidate/insertData';
 
   insertDataCandidate(formData: FormData): Observable<CandidateProfile> {
     return this.http.post<CandidateProfile>(this.insertCandidate, formData);
@@ -98,9 +98,9 @@ export class RequestApiService {
 
   // start interview
   schedule =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/interview/insertDataSchedule';
+    'http://localhost:81/HRM-BE/interview/insertDataSchedule';
   point =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/interview/insertDataPoint';
+    'http://localhost:81/HRM-BE/interview/insertDataPoint';
 
   insertDataSchedule(formData: FormData): Observable<Interview> {
     return this.http.post<Interview>(this.schedule, formData);
@@ -112,7 +112,7 @@ export class RequestApiService {
 
   //start hiring
   hiring =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/hiring/insertDataHiring';
+    'http://localhost:81/HRM-BE/hiring/insertDataHiring';
   insertDataHiring(formData: FormData): Observable<Hiring> {
     return this.http.post<Hiring>(this.hiring, formData);
   }
@@ -120,29 +120,29 @@ export class RequestApiService {
 
   // start records management
   insert_staffProfile =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataStaffProfile';
+    'http://localhost:81/HRM-BE/records/insertDataStaffProfile';
   get_staffProfile =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/getDataStaffProfile';
+    'http://localhost:81/HRM-BE/records/getDataStaffProfile';
 
   get_staffProfileByID =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/getDataStaffProfileByID/';
+    'http://localhost:81/HRM-BE/records/getDataStaffProfileByID/';
   contract =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataContract';
+    'http://localhost:81/HRM-BE/records/insertDataContract';
   cancel_contract =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataCancleContract';
+    'http://localhost:81/HRM-BE/records/insertDataCancleContract';
   resource =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataResource';
+    'http://localhost:81/HRM-BE/records/insertDataResource';
   reward =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataReward';
+    'http://localhost:81/HRM-BE/records/insertDataReward';
   appoint =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataAppoint';
+    'http://localhost:81/HRM-BE/records/insertDataAppoint';
   discipline =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataDiscipline';
-  tax = 'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataTax';
+    'http://localhost:81/HRM-BE/records/insertDataDiscipline';
+  tax = 'http://localhost:81/HRM-BE/records/insertDataTax';
   insurance =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataInsurance';
+    'http://localhost:81/HRM-BE/records/insertDataInsurance';
   allowance =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/insertDataAllowance';
+    'http://localhost:81/HRM-BE/records/insertDataAllowance';
   insertDataStaffProfile(formData: FormData): Observable<StaffProfiles> {
     return this.http.post<StaffProfiles>(this.insert_staffProfile, formData);
   }
@@ -151,7 +151,7 @@ export class RequestApiService {
   }
   decisionRecord(table: string): Observable<StaffProfiles[]> {
     const url =
-      'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/records/decision/' + table;
+      'http://localhost:81/HRM-BE/records/decision/' + table;
     return this.http.get<StaffProfiles[]>(url, httpOptions);
   }
   insertDataContract(formData: FormData): Observable<Contract> {
@@ -195,19 +195,19 @@ export class RequestApiService {
   // end records management
   // start time keeping
   getTimeKeepApi =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/timeKeeping/getData';
+    'http://localhost:81/HRM-BE/timeKeeping/getData';
   getTimeKeepApiByID =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/timeKeeping/getDataById/';
+    'http://localhost:81/HRM-BE/timeKeeping/getDataById/';
   timeKeepApi =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/timeKeeping/insertData';
+    'http://localhost:81/HRM-BE/timeKeeping/insertData';
   timeKeepKPIApi =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/timeKeeping/insertDataKPI';
+    'http://localhost:81/HRM-BE/timeKeeping/insertDataKPI';
   timeKeepSaleApi =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/timeKeeping/insertDataSale';
+    'http://localhost:81/HRM-BE/timeKeeping/insertDataSale';
   missionApi =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/timeKeeping/insertDataMission';
+    'http://localhost:81/HRM-BE/timeKeeping/insertDataMission';
   absentApi =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/timeKeeping/insertDataAbsent';
+    'http://localhost:81/HRM-BE/timeKeeping/insertDataAbsent';
   GetDataTimeKeep(): Observable<any[]> {
     return this.http.get<any[]>(this.getTimeKeepApi, httpOptions);
   }
@@ -217,7 +217,7 @@ export class RequestApiService {
   }
   decisionTimeKeep(table: string): Observable<any[]> {
     const url =
-      'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/timeKeeping/decision/' +
+      'http://localhost:81/HRM-BE/timeKeeping/decision/' +
       table;
     return this.http.get<any[]>(url, httpOptions);
   }
@@ -243,17 +243,17 @@ export class RequestApiService {
   // end time keeping
 
   //start salary
-  dataSalary = 'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/salary/getData';
+  dataSalary = 'http://localhost:81/HRM-BE/salary/getData';
   dataSalaryByID =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/salary/getDataByID/';
+    'http://localhost:81/HRM-BE/salary/getDataByID/';
   calculation =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/salary/getDataCalculation';
+    'http://localhost:81/HRM-BE/salary/getDataCalculation';
   updateCalculation =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/salary/updateDataCalculation';
+    'http://localhost:81/HRM-BE/salary/updateDataCalculation';
   increaseSalary =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/salary/insertDataIncreaseSalary';
+    'http://localhost:81/HRM-BE/salary/insertDataIncreaseSalary';
   advanceSalary =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/salary/insertDataAdvanceSalary';
+    'http://localhost:81/HRM-BE/salary/insertDataAdvanceSalary';
   getDataSalary(): Observable<any[]> {
     return this.http.get<any[]>(this.dataSalary, httpOptions);
   }
@@ -280,28 +280,28 @@ export class RequestApiService {
   //end salary
 
   //test
-  test = 'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/salary/getData';
+  test = 'http://localhost:81/HRM-BE/salary/getData';
 
   //dashboard
-  dataChart = 'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/token/getDataChart';
+  dataChart = 'http://localhost:81/HRM-BE/token/getDataChart';
   getDataChart(): Observable<any> {
     return this.http.get<any>(this.dataChart);
   }
   //training
   insertTraining =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/training/insertData';
+    'http://localhost:81/HRM-BE/training/insertData';
   dataTraining =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/training/getData';
+    'http://localhost:81/HRM-BE/training/getData';
   dataTrainingById =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/training/getDataById/';
+    'http://localhost:81/HRM-BE/training/getDataById/';
   approvalTraining =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/training/insertDataParticipate';
+    'http://localhost:81/HRM-BE/training/insertDataParticipate';
   getDataParticipate =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/training/getDataParticipate/';
+    'http://localhost:81/HRM-BE/training/getDataParticipate/';
   getDataProcess =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/training/getDataProcess/';
+    'http://localhost:81/HRM-BE/training/getDataProcess/';
   updateDataProcess =
-    'https://qlnhansupvp.herokuapp.com/hrm/HRM-BE/training/updateDataProcess';
+    'http://localhost:81/HRM-BE/training/updateDataProcess';
   insertDataTraining(formData: FormData): Observable<any> {
     return this.http.post<any>(this.insertTraining, formData);
   }

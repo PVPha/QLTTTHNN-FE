@@ -33,18 +33,18 @@ export class DetailRecruitComponent implements OnInit {
     })
   }
 
-  onSubmit(ID:number, id_recruit: string, department: string, position: string, require: string, describe: string, amount: string, time: string, location: string, benefit: string){
+  onSubmit(ID:number, id_recruit: string, department: string, position: string, amount: string, location: string){
     const newRecruitment = {
             ID: ID,
             id_recruit: id_recruit,
             department: department,
             position: position,
-            require: require,
-            describe: describe,
+            // require: require,
+            // describe: describe,
             amount: amount,
-            time: time,
+            // time: time,
             location: location,
-            benefit: benefit,
+            // benefit: benefit,
           }
     const toJson = JSON.stringify(newRecruitment);
     console.log(toJson);

@@ -45,8 +45,8 @@ export class ViewCandidateProfilesComponent implements OnInit {
     'phoneNumber',
     'email',
     'position',
-    'status',
-    'action',
+    // 'status',
+    // 'action',
   ];
   dataSource = new MatTableDataSource<CandidateProfile>(this.cadidateProfile);
 

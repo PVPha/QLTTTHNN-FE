@@ -1,6 +1,13 @@
 <div class="container">
   <div class="title mb-2">
-    <mat-card-header>Danh sách hồ sơ ứng viên</mat-card-header>
+    <mat-card-header>Bảng học phí</mat-card-header>
+  </div>
+  <div class="float-right">
+    <a
+      class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+
+      ><i class="fas fa-download fa-sm text-white-50"></i> Xuất bảng học phí</a
+    >
   </div>
   <!-- <mat-form-field appearance="standard">
     <mat-label>Tìm kiếm</mat-label>
@@ -42,17 +49,17 @@
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="id_candidate" sticky>
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã hồ sơ</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã học viên</th>
         <td mat-cell *matCellDef="let element">{{ element.id_candidate }}</td>
       </ng-container>
 
       <ng-container matColumnDef="fullName">
-        <th mat-header-cell *matHeaderCellDef>Họ tên</th>
+        <th mat-header-cell *matHeaderCellDef>Tên học viên</th>
         <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
       </ng-container>
 
       <ng-container matColumnDef="sex">
-        <th mat-header-cell *matHeaderCellDef>Giới tính</th>
+        <th mat-header-cell *matHeaderCellDef>Mã khóa học</th>
         <td mat-cell *matCellDef="let element">{{ element.sex }}</td>
       </ng-container>
 
@@ -62,17 +69,17 @@
       </ng-container> -->
 
       <ng-container matColumnDef="phoneNumber">
-        <th mat-header-cell *matHeaderCellDef>Số điện thoại</th>
+        <th mat-header-cell *matHeaderCellDef>Tên khóa học</th>
         <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <th mat-header-cell *matHeaderCellDef>Học phí</th>
         <td mat-cell *matCellDef="let element">{{ element.email }}</td>
       </ng-container>
 
       <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef>vị trí ứng tuyển</th>
+        <th mat-header-cell *matHeaderCellDef>Thời gian đóng</th>
         <td mat-cell *matCellDef="let element">{{ element.position }}</td>
       </ng-container>
 
@@ -96,32 +103,10 @@
         <td mat-cell *matCellDef="let element" > {{element.languageSkill}} </td>
       </ng-container> -->
 
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
-        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
-      </ng-container>
 
-      <ng-container matColumnDef="action" stickyEnd>
-        <th mat-header-cell *matHeaderCellDef>hành động</th>
-        <td mat-cell *matCellDef="let element; let index = index">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu"
-          >
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button
-              mat-menu-item
-              mat-raised-button
-              (click)="
-                openDialogDetailProfile(element.ID, pageIndex, index, pageSize)
-              "
-            >
-              <mat-icon>open_in_new</mat-icon>
-              <span>chi tiết</span>
-            </button>
+
+
+
             <!-- <button mat-menu-item [disabled]="element.status == 'từ chối' ? true : false" (click)="showIndex(pageIndex, index, pageSize)">
               <mat-icon>done</mat-icon>
               <span>duyệt</span>
@@ -130,40 +115,12 @@
               <mat-icon>clear</mat-icon>
               <span>từ chối</span>
             </button> -->
-            <button
-              mat-menu-item
-              mat-raised-button
-              [disabled]="element.status == 'chờ' ? false : true"
-              (click)="
-                openDialogInterviewSchedule(
-                  element.ID,
-                  pageIndex,
-                  index,
-                  pageSize
-                )
-              "
-            >
-              <mat-icon>alarm_add</mat-icon>
-              <span>hẹn phỏng vấn</span>
-            </button>
-            <button
-              mat-menu-item
-              mat-raised-button
-              [disabled]="element.status == 'duyệt' ? false : true"
-              (click)="
-                openDialogHiringDecision(element.ID, pageIndex, index, pageSize)
-              "
-            >
-              <mat-icon>assignment_ind</mat-icon>
-              <span>lập quyết định tuyển dụng</span>
-            </button>
+
             <!-- <button mat-menu-item mat-raised-button [routerLink]="['/add-staffProfile/'+ element.ID]" routerLinkActive="router-link-active" >
               <mat-icon>assignment_ind</mat-icon>
               <span>Nhập hồ sơ nhân viên</span>
             </button> -->
-          </mat-menu>
-        </td>
-      </ng-container>
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

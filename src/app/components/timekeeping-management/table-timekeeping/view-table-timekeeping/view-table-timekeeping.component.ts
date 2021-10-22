@@ -48,30 +48,14 @@ export class ViewTableTimekeepingComponent implements OnInit {
     'leave',
     'absent',
     'holiday',
-    'mission',
-    'workDay',
-    'overtime',
-    'early',
-    'late',
-    'action',
+    // 'mission',
+    // 'workDay',
+    // 'overtime',
+    // 'early',
+    // 'late',
+    // 'action',
   ];
-  displayedColumnsSales: string[] = [
-    'id_staff',
-    'fullname',
-    'setSales',
-    'achieveSales',
-    'missingSales',
-    'exceedSales',
-    'action',
-  ];
-  displayedColumnsKPI: string[] = [
-    'id_staff',
-    'fullname',
-    'setKPI',
-    'achieveKPI',
-    'classification',
-    'action',
-  ];
+
 
   dataSource = new MatTableDataSource<Timekeeping>(this.timeKeeping);
   dataSourceSale = new MatTableDataSource<TimekeepingAccordingToSale>(

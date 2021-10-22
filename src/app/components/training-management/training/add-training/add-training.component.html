@@ -1,18 +1,18 @@
 <div class="container">
   <div class="title">
-    <mat-card-header>THÊM KHÓA ĐẠO TẠO</mat-card-header>
+    <mat-card-header>THÊM KHÓA HỌC</mat-card-header>
   </div>
   <form class="form">
     <div class="row justify-content-center">
       <div class="col-3">
         <mat-form-field>
-          <mat-label>Mã khóa đào tạo</mat-label>
+          <mat-label>Mã khóa học</mat-label>
           <input matInput #id_training value="{{ id_training_temp }}" />
         </mat-form-field>
       </div>
       <div class="col-3">
         <mat-form-field>
-          <mat-label>Tên khóa đào tạo</mat-label>
+          <mat-label>Tên khóa học</mat-label>
           <input matInput #name />
         </mat-form-field>
       </div>
@@ -20,7 +20,7 @@
     <div class="row justify-content-center">
       <div class="col-6">
         <mat-form-field>
-          <mat-label>Thời gian đào tạo</mat-label>
+          <mat-label>Thời gian khóa học</mat-label>
           <mat-date-range-input [formGroup]="range" [rangePicker]="rangepicker">
             <input
               matStartDate
@@ -59,7 +59,7 @@
     <div class="row justify-content-center">
       <div class="col-6">
         <mat-form-field>
-          <mat-label>Địa điểm</mat-label>
+          <mat-label>Loại khóa học</mat-label>
           <input matInput #location />
         </mat-form-field>
       </div>
@@ -67,7 +67,7 @@
     <div class="row justify-content-center">
       <div class="col-6">
         <mat-form-field>
-          <mat-label>Người đào tạo</mat-label>
+          <mat-label>Học phí</mat-label>
           <input matInput #trainers />
         </mat-form-field>
       </div>
@@ -79,9 +79,9 @@
           onclick="setContent('training', 'editorTraining')"
         >
           <mat-expansion-panel-header>
-            <mat-panel-title> Nội dung </mat-panel-title>
+            <mat-panel-title> Mô tả </mat-panel-title>
             <mat-panel-description>
-              nội dung chi tiết khóa đào tạo
+              Mô tả chi tiết
             </mat-panel-description>
           </mat-expansion-panel-header>
           <!-- <app-view-interview-schedule></app-view-interview-schedule> -->

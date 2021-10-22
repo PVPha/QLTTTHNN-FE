@@ -36,13 +36,13 @@ export class ViewStaffProfilesComponent implements OnInit {
   displayedColumns: string[] = [
     'staffId',
     'fullname',
-    'sex',
+    // 'sex',
     'phoneNumber',
     'email',
     'position',
-    'department',
-    'salary',
-    'leave',
+    // 'department',
+    // 'salary',
+    // 'leave',
     'action',
   ];
   dataSource = new MatTableDataSource<StaffProfiles>(this.staffProfiles);

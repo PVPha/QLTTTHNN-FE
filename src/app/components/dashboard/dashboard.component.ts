@@ -16,7 +16,7 @@ import { RequestApiService } from 'src/app/services/request-api.service';
 })
 export class DashboardComponent implements OnInit {
   //doughnut
-  public doughnutChartLabels: Label[] = ['Thôi việc', 'Chính thức', 'Thử việc'];
+  public doughnutChartLabels: Label[] = ['Giảng viên vắng', 'Giảng viên có mặt', 'Thử việc'];
   public doughnutChartData: MultiDataSet = [[0, 0, 0]];
   public doughnutChartType: ChartType = 'doughnut';
   public doughnutChartColors = [
@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
   public pieChartOptions: ChartOptions = {
     responsive: true,
   };
-  public pieChartLabels: Label[] = [['Tuyển dụng'], 'Từ chối', 'Chờ'];
+  public pieChartLabels: Label[] = [['Khóa đang có'], 'Khóa đã xong', 'Khóa chờ xét'];
   public pieChartData: SingleDataSet = [0, 0, 0]; //doughnut
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;

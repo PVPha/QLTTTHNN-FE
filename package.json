@@ -26,6 +26,7 @@
     "file-saver": "^2.0.5",
     "gulpfile": "^1.0.2",
     "ng2-charts": "^2.4.2",
+    "ngx-material-timepicker": "^5.5.3",
     "pdfjs-dist": "^2.9.359",
     "rxjs": "~6.6.0",
     "tinymce": "^5.8.2",

@@ -1,12 +1,12 @@
 <div class="container">
   <div class="title mb-2">
-    <mat-card-header>Danh sách nhân viên tham gia đào tạo</mat-card-header>
+    <mat-card-header>Danh sách học viên tham gia khóa học</mat-card-header>
   </div>
   <div class="float-right">
     <a
       class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
       (click)="export()"
-      ><i class="fas fa-download fa-sm text-white-50"></i> Xuất bảng đào tạo</a
+      ><i class="fas fa-download fa-sm text-white-50"></i> Xuất bảng lớp học</a
     >
   </div>
   <!-- <mat-form-field appearance="standard">
@@ -49,32 +49,32 @@
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="staffId">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã Nhân viên</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã học viên</th>
         <td mat-cell *matCellDef="let element">{{ element.id_staff }}</td>
       </ng-container>
 
       <ng-container matColumnDef="fullName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Họ tên</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tên học viên</th>
         <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
       </ng-container>
 
       <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef>chức vụ</th>
+        <th mat-header-cell *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let element">{{ element.position }}</td>
       </ng-container>
 
       <ng-container matColumnDef="trainingId">
-        <th mat-header-cell *matHeaderCellDef>Mã khóa đào tạo</th>
+        <th mat-header-cell *matHeaderCellDef>Số điện thoại</th>
         <td mat-cell *matCellDef="let element">{{ element.id_training }}</td>
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>tên khóa đào tạo</th>
+        <th mat-header-cell *matHeaderCellDef>tên khóa học</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
       </ng-container>
 
       <ng-container matColumnDef="time">
-        <th mat-header-cell *matHeaderCellDef>Thời gian đào tạo</th>
+        <th mat-header-cell *matHeaderCellDef>Thời gian học</th>
         <td mat-cell *matCellDef="let element">{{ element.time }}</td>
       </ng-container>
 
@@ -89,7 +89,7 @@
       </ng-container> -->
 
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
+        <th mat-header-cell *matHeaderCellDef>Học phí</th>
         <td mat-cell *matCellDef="let element">{{ element.status }}</td>
       </ng-container>
 
@@ -104,26 +104,22 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <!-- <button mat-menu-item mat-raised-button >
-              <mat-icon>open_in_new</mat-icon>
-              <span>chi tiết</span>
-            </button>
             <button mat-menu-item [disabled]="element.status == 'từ chối' ? true : false">
               <mat-icon>done</mat-icon>
-              <span>duyệt</span>
+              <span>Đã đóng</span>
             </button>
             <button mat-menu-item  [disabled]="element.status == 'duyệt' ? true : false">
               <mat-icon>clear</mat-icon>
-              <span>từ chối</span>
-            </button> -->
-            <button
+              <span>Chưa đóng</span>
+            </button>
+            <!-- <button
               mat-menu-item
               mat-raised-button
               (click)="openDialogTrainingProcess(element.id_staff, index)"
             >
               <mat-icon>track_changes</mat-icon>
               <span>quá trình đào tạo</span>
-            </button>
+            </button> -->
             <!-- <button mat-menu-item mat-raised-button >
               <mat-icon>assignment_ind</mat-icon>
               <span>lập quyết định tuyển dụng</span>

@@ -15,7 +15,6 @@
         </div>
       </div>
       <div class="card-footer">
-        <hr />
         <div class="button-container">
           <!-- <div class="row">
             <div class="col-lg-3 col-md-6 col-6 ml-auto">
@@ -37,33 +36,7 @@
               </h5>
             </div>
           </div> -->
-          <div class="row">
-            <div class="col-6">
-              <mat-label>Giới tính: </mat-label>
-              <img
-                class="img-fluid img-sex"
-                src="../../../../../assets/img/undraw_profile_2.svg"
-                alt=""
-              />
-            </div>
-            <div class="col-6">
-              <mat-label>Ngày sinh: </mat-label>
-              {{ data.dateOfBirth }}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Địa chỉ</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Home Address"
-                  value="{{ data.address }}"
-                />
-              </div>
-            </div>
-          </div>
+
           <div class="row">
             <div class="col">
               <div class="form-group">
@@ -86,30 +59,6 @@
                   class="form-control"
                   placeholder="Last Name"
                   value="{{ data.email }}"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <label>CMND</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Last Name"
-                  value="{{ data.identityCard }}"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label>Dân tộc</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder=""
-                  value="{{ data.nation }}"
                 />
               </div>
             </div>
@@ -187,14 +136,14 @@
   <div class="col-md-8">
     <div class="card card-user mb-3">
       <div class="card-header mt-5">
-        <h5 class="card-title">Hồ sơ nhân viên</h5>
+        <h5 class="card-title">Hồ sơ giảng viên</h5>
       </div>
       <div class="card-body">
         <form>
           <div class="row mb-3">
             <div class="col-md-3 pr-1">
               <div class="form-group">
-                <label>Mã Nhân viên</label>
+                <label>Mã giảng viên</label>
                 <input
                   type="text"
                   class="form-control"
@@ -206,7 +155,7 @@
             </div>
             <div class="col-md-4 px-1">
               <div class="form-group">
-                <label>Vị trí</label>
+                <label>Loại giảng viên</label>
                 <input
                   type="text"
                   class="form-control"
@@ -215,85 +164,13 @@
                 />
               </div>
             </div>
-            <div class="col-md-4 px-1">
-              <div class="form-group">
-                <label>Phòng ban</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder=""
-                  value="{{ data.department }}"
-                />
-              </div>
-            </div>
+
             <!-- <div class="col-md-4 pl-1">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
                 <input type="email" class="form-control" placeholder="Email">
               </div>
             </div> -->
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-md-4 pr-1">
-              <div class="form-group">
-                <label>Lương căn bản</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="City"
-                  value="{{ data.salary | currency: 'VND':'' }}"
-                />
-              </div>
-            </div>
-            <div class="col-md-4 px-1">
-              <div class="form-group">
-                <label>Hệ số lương</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Country"
-                  value="{{ data.coefficientSalary }}"
-                />
-              </div>
-            </div>
-            <div class="col-md-4 pl-1">
-              <div class="form-group">
-                <label>Số ngày phép</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder=""
-                  value="{{ data.leaveDay }}"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col">
-              <div class="form-group">
-                <label>Học Vấn</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder=""
-                  value="{{ data.education }}"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <label>Trình độ ngoại ngữ</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder=""
-                  value="{{ data.languageSkill }}"
-                />
-              </div>
-            </div>
           </div>
           <div class="row">
             <div class="update ml-auto mr-auto">

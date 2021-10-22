@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="title">
+    <mat-card-header>THÊM THỜI KHÓA BIỂU</mat-card-header>
+  </div>
+  <form class="form">
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Mã khóa học</mat-label>
+          <input matInput  />
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Tên khóa học</mat-label>
+          <input matInput #name />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Thứ</mat-label>
+          <input matInput/>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Ca</mat-label>
+          <input matInput/>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Giảng viên</mat-label>
+          <input matInput/>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Phòng học</mat-label>
+          <input matInput/>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Thời gian</mat-label>
+          <input matInput/>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ml-auto mr-auto">
+        <button
+          type="submit"
+          class="btn btn-primary mt-3 mb-5"
+          [routerLink]="['/view-salary']"
+          routerLinkActive="router-link-active"
+        >
+          Thêm
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

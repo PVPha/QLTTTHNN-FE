@@ -21,6 +21,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, DialogChangePass } from './app.component';
@@ -80,6 +82,8 @@ import { DetailRecruitComponent } from './components/recruitment/infor-recruit/d
 import { Interceptor } from './interceptor';
 import { ChartsModule } from 'ng2-charts';
 import { LoginComponent } from './components/users/login/login.component';
+import { AddTKBComponent } from './components/salary-management/addTKB/addTKB.component';
+
 
 @NgModule({
   declarations: [
@@ -126,6 +130,7 @@ import { LoginComponent } from './components/users/login/login.component';
     DialogDetailTraining,
     LoginComponent,
     DialogChangePass,
+    AddTKBComponent,
   ],
   imports: [
     BrowserModule,
@@ -153,6 +158,7 @@ import { LoginComponent } from './components/users/login/login.component';
     MatAutocompleteModule,
     ChartsModule,
     MatSortModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
