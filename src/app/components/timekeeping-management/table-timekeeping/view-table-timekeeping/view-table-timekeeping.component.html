@@ -94,31 +94,6 @@
             <td mat-cell *matCellDef="let element">{{ element.holiday }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="mission">
-            <th mat-header-cell *matHeaderCellDef>công tác</th>
-            <td mat-cell *matCellDef="let element">{{ element.mission }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="workDay">
-            <th mat-header-cell *matHeaderCellDef>làm</th>
-            <td mat-cell *matCellDef="let element">{{ element.workDay }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="overtime">
-            <th mat-header-cell *matHeaderCellDef>tăng ca (h)</th>
-            <td mat-cell *matCellDef="let element">{{ element.overtime }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="early">
-            <th mat-header-cell *matHeaderCellDef>về sớm (h)</th>
-            <td mat-cell *matCellDef="let element">{{ element.early }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="late">
-            <th mat-header-cell *matHeaderCellDef>đi trễ (h)</th>
-            <td mat-cell *matCellDef="let element">{{ element.late }}</td>
-          </ng-container>
-
           <!-- <ng-container matColumnDef="kpi">
         <th mat-header-cell *matHeaderCellDef> KPI </th>
         <td mat-cell *matCellDef="let element" > {{element.kpi}} </td>
@@ -129,18 +104,7 @@
         <td mat-cell *matCellDef="let element"> {{element.sales}} </td>
       </ng-container> -->
 
-          <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef>hành động</th>
-            <td mat-cell *matCellDef="let element; let index = index">
-              <button
-                mat-icon-button
-                [matMenuTriggerFor]="menu"
-                aria-label="Example icon-button with a menu"
-                [disabled]="role == 1"
-              >
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu">
+
                 <!-- <button mat-menu-item mat-raised-button >
               <mat-icon>open_in_new</mat-icon>
               <span>chi tiết</span>
@@ -153,20 +117,7 @@
               <mat-icon>clear</mat-icon>
               <span>từ chối</span>
             </button> -->
-                <button
-                  mat-menu-item
-                  (click)="openDialogMission(element.ID, index)"
-                >
-                  <mat-icon>work</mat-icon>
-                  <span>Quyết định công tác</span>
-                </button>
-                <button
-                  mat-menu-item
-                  (click)="openDialogAbsent(element.ID, index)"
-                >
-                  <mat-icon>assignment</mat-icon>
-                  <span>đơn xin nghỉ phép</span>
-                </button>
+
                 <!-- <button mat-menu-item (click)="openDialogComplain()" >
               <mat-icon>assignment_late</mat-icon>
               <span>Khiếu nại chấm công</span>
@@ -191,9 +142,6 @@
               <mat-icon>new_releases</mat-icon>
               <span>Lập quyết định kỉ luật</span>
             </button> -->
-              </mat-menu>
-            </td>
-          </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->

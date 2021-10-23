@@ -16,7 +16,7 @@ import { RequestApiService } from 'src/app/services/request-api.service';
 })
 export class DashboardComponent implements OnInit {
   //doughnut
-  public doughnutChartLabels: Label[] = ['Giảng viên vắng', 'Giảng viên có mặt', 'Thử việc'];
+  public doughnutChartLabels: Label[] = ['Tổng học viên ', 'Học viên đang theo học', 'Học viên đã tốt nghiệp'];
   public doughnutChartData: MultiDataSet = [[0, 0, 0]];
   public doughnutChartType: ChartType = 'doughnut';
   public doughnutChartColors = [

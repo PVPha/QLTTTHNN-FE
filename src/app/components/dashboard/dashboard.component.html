@@ -24,7 +24,7 @@
                   mb-1
                 "
               >
-                Số Giảng Viên
+                Số Học Viên
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 {{ LTV == null ? 0 : (LTV | currency: "VND":"") }}
@@ -149,7 +149,7 @@
             justify-content-between
           "
         >
-          <h6 class="m-0 font-weight-bold text-primary">Giảng Viên</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Số học viên</h6>
           <!-- <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -179,13 +179,13 @@
           </div>
           <div class="mt-4 text-center small">
             <span class="mr-2">
-              <i class="fas fa-circle text-primary"></i> Giảng viên có mặt {{ CT }}
+              <i class="fas fa-circle text-primary"></i> Học viên đang theo học {{ CT }}
             </span>
             <span class="mr-2">
-              <i class="fas fa-circle text-success"></i> Giảng viên thử việc {{ TV }}
+              <i class="fas fa-circle text-success"></i>  Học viên đã tốt nghiệp {{ TV }}
             </span>
             <span class="mr-2">
-              <i class="fas fa-circle text-info"></i> Giảng viên vắng {{ NV }}
+              <i class="fas fa-circle text-info"></i> Tổng số học viên   {{ NV }}
             </span>
           </div>
         </div>
