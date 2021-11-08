@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="title mb-2">
+    <mat-card-header>Bảng học phí</mat-card-header>
+  </div>
+  <div class="float-right">
+    <a
+      class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      (click)="export()"
+      ><i class="fas fa-download fa-sm text-white-50"></i> Xuất bảng học phí</a
+    >
+  </div>
+  <!-- <mat-form-field appearance="standard">
+    <mat-label>Tìm kiếm</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+  </mat-form-field> -->
+  <form
+    class="
+      d-none d-sm-inline-block
+      form-inline
+      mr-auto
+      ml-md-3
+      my-2 my-md-0
+      mw-100
+      navbar-search
+    "
+  >
+    <div class="input-group mb-2">
+      <input
+        type="text"
+        class="form-control bg-light border-0 small"
+        placeholder="Tìm kiếm..."
+        aria-label="Search"
+        aria-describedby="basic-addon2"
+        matInput
+        (keyup)="applyFilter($event)"
+        #input
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-primary pt-2"
+          style="background-color: #4e73df; border-color: #4e73df"
+          type="button"
+        >
+          <i class="fas fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id_stu" sticky>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mã học viên</th>
+        <td mat-cell *matCellDef="let element">{{ element.id_stu }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name_stu">
+        <th mat-header-cell *matHeaderCellDef>Tên học viên</th>
+        <td mat-cell *matCellDef="let element">{{ element.name_stu }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="id_course">
+        <th mat-header-cell *matHeaderCellDef>Mã khóa học</th>
+        <td mat-cell *matCellDef="let element">{{ element.id_course }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name_course">
+        <th mat-header-cell *matHeaderCellDef>Tên khóa học</th>
+        <td mat-cell *matCellDef="let element">{{ element.name_course }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="money">
+        <th mat-header-cell *matHeaderCellDef>Học phí</th>
+        <td mat-cell *matCellDef="let element">{{ element.money }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="time_in">
+        <th mat-header-cell *matHeaderCellDef>Thời gian đóng</th>
+        <td mat-cell *matCellDef="let element">{{ element.time_in }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon class="iconApproval">{{
+            element.status == 1 ? "done_all" : "clear"
+          }}</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>hành động</th>
+        <td mat-cell *matCellDef="let element; let index = index">
+          <button
+            mat-icon-button
+            style="background-color: transparent"
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button
+              mat-menu-item
+              mat-raised-button
+              (click)="openDialogPayMoney(element.ID, index)"
+            >
+              <mat-icon>receipt</mat-icon>
+              <span>Đóng học phí</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">không tìm thấy "{{ input.value }}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      (page)="getPageIndex($event)"
+      [pageSizeOptions]="[5, 10, 20]"
+    ></mat-paginator>
+    <!--showFirstLastButtons-->
+  </div>
+</div>

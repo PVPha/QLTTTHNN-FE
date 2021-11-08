@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { MockInfoRecruit } from 'src/app/mock-info-recruit';
+//import { MockInfoRecruit } from 'src/app/mock-view-student';
 import { InfoRecruit } from 'src/app/info-recruit';
 import { RequestApiService } from 'src/app/services/request-api.service';
 import { MatDialog } from '@angular/material/dialog';

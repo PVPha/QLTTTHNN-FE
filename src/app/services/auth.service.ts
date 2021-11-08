@@ -15,8 +15,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root',
 })
 export class AuthService {
-  private api = 'http://localhost:81/HRM-BE/token/signIn';
-  private apiChange = 'http://localhost:81/HRM-BE/token/changePass';
+  private api = 'http://localhost:8080/hrm/HRM-BE/token/signIn';
+  private apiChange = 'http://localhost:8080/hrm/HRM-BE/token/changePass';
   public userLogin = new BehaviorSubject('');
   currentUser = this.userLogin.asObservable();
   // private loggedUserSubject: BehaviorSubject<User>;

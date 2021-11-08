@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="title mb-3">
+    <mat-card-header>Đăng kí học viên</mat-card-header>
+    <!-- <mat-card-header>{{respon}}</mat-card-header> -->
+  </div>
+  <form class="form">
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Mã học viên</mat-label>
+          <input type="text" matInput [value]="id_temp" #id_stu />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Tên học viên</mat-label>
+          <input type="text" matInput #stu_name />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Số Điện Thoại</mat-label>
+          <input type="text" matInput #phone />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput #email />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ml-auto mr-auto mb-3 mt-3">
+        <button
+          type="submit"
+          class="btn btn-danger"
+          (click)="
+            onSubmit(id_stu.value, stu_name.value, email.value, phone.value)
+          "
+          [routerLink]="['/view-student']"
+          routerLinkActive="router-link-active"
+        >
+          Thêm
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

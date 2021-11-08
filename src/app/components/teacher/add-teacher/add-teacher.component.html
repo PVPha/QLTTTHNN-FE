@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="title mb-3">
+    <mat-card-header>Thêm Giảng Viên</mat-card-header>
+  </div>
+  <form class="form">
+    <div class="row">
+      <div class="col-3">
+        <span id="avatar">
+          <img class="img-fluid" id="imgOut" src="#" alt="" />
+        </span>
+        <div class="row mt-3">
+          <div class="col-1">
+            <label>Ảnh</label>
+          </div>
+          <div class="col-10 ml-2" style="overflow: hidden">
+            <input
+              type="file"
+              [formControl]="file"
+              (change)="fileChange($event)"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <mat-form-field>
+          <mat-label>Mã giảng viên</mat-label>
+          <input matInput [value]="id_temp" #id_tea />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Tên giảng viên</mat-label>
+          <input matInput #name_tea />
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-label>Loại giảng viên</mat-label>
+          <!-- <input matInput #type_tea /> -->
+          <mat-select #mode #type_tea>
+            <mat-option value="Giảng viên">Giảng viên</mat-option>
+            <mat-option value="Trợ giảng">Trợ giảng</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center"></div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Số điện thoại</mat-label>
+          <input matInput #phone />
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput #email />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ml-auto mr-auto mt-3">
+        <button
+          type="submit"
+          class="btn btn-primary mb-5"
+          (click)="
+            onSubmit(
+              id_tea.value,
+              name_tea.value,
+              type_tea.value,
+              email.value,
+              phone.value
+            )
+          "
+          [routerLink]="['/view-teacher']"
+          routerLinkActive="router-link-active"
+        >
+          Thêm
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

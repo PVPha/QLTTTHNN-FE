@@ -19,6 +19,16 @@ import { ViewListTrainingComponent } from './components/training-management/trai
 import { ListDatabaseComponent } from './components/users/list-database/list-database.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { AddTKBComponent } from './components/salary-management/addTKB/addTKB.component';
+import { AddStudentComponent } from './components/student/add-student/add-student.component';
+import { ViewStudentComponent } from './components/student/view-student/view-student.component';
+import { MoneyComponent } from './components/student/money/money.component';
+import { AddTeacherComponent } from './components/teacher/add-teacher/add-teacher.component';
+import { ViewTeacherComponent } from './components/teacher/view-teacher/view-teacher.component';
+import { AddCourseComponent } from './components/course/add-course/add-course.component';
+import { ViewCourseComponent } from './components/course/view-course/view-course.component';
+import { JoinComponent } from './components/course/join/join.component';
+import { ViewStorageComponent } from './components/storage/view-storage/view-storage.component';
+import { ViewScheduleComponent } from './components/schedule/view-schedule/view-schedule.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -34,23 +44,53 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'add-recruit',
-    component: AddRecruitComponent,
+    path: 'add-student',
+    component: AddStudentComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'view-recruit',
-    component: ViewRecruitComponent,
+    path: 'view-student',
+    component: ViewStudentComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'add-candidateProfile',
-    component: AddCandidateProfilesComponent,
+    path: 'view-money',
+    component: MoneyComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'view-candidateProfile',
-    component: ViewCandidateProfilesComponent,
+    path: 'add-teacher',
+    component: AddTeacherComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'view-teacher',
+    component: ViewTeacherComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-course',
+    component: AddCourseComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'view-course',
+    component: ViewCourseComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'view-join/:ID',
+    component: JoinComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'view-storage',
+    component: ViewStorageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'view-schedule',
+    component: ViewScheduleComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -59,37 +99,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   // {path: 'add-staffProfile', component: AddStaffProfilesComponent},
-  {
-    path: 'view-staffProfile',
-    component: ViewStaffProfilesComponent,
-    canActivate: [AuthGuard],
-  },
+
   { path: 'test', component: TestComponent, canActivate: [AuthGuard] },
-  {
-    path: 'add-training',
-    component: AddTrainingComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'view-training',
-    component: ViewListTrainingComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'view-staffParticipate/:ID',
-    component: ViewListStaffParticipateComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'view-timekeeping',
-    component: ViewTableTimekeepingComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'view-salary',
-    component: ViewTableSalaryComponent,
-    canActivate: [AuthGuard],
-  },
+
   {
     path: 'detail-recruit/:ID',
     component: DetailRecruitComponent,

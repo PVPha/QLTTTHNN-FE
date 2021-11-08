@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { Training } from '../../../../training';
-import { MockTraining } from 'src/app/mock-training';
+//import { MockTraining } from 'src/app/mock-teacher';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import {

@@ -13,7 +13,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {
+  MatNativeDateModule,
+  MatPseudoCheckboxModule,
+} from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -21,8 +24,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, DialogChangePass } from './app.component';
@@ -66,7 +70,6 @@ import {
 import {
   DialogAbsent,
   DialogComplain,
-  DialogUpload,
   DialogMission,
   ViewTableTimekeepingComponent,
 } from './components/timekeeping-management/table-timekeeping/view-table-timekeeping/view-table-timekeeping.component';
@@ -83,7 +86,35 @@ import { Interceptor } from './interceptor';
 import { ChartsModule } from 'ng2-charts';
 import { LoginComponent } from './components/users/login/login.component';
 import { AddTKBComponent } from './components/salary-management/addTKB/addTKB.component';
-
+import { AddStudentComponent } from './components/student/add-student/add-student.component';
+import {
+  DialogRegisterCourse,
+  DialogUpdateStudent,
+  ViewStudentComponent,
+} from './components/student/view-student/view-student.component';
+import {
+  DialogPayMoney,
+  MoneyComponent,
+} from './components/student/money/money.component';
+import { AddTeacherComponent } from './components/teacher/add-teacher/add-teacher.component';
+import {
+  DialogUpdateTeacher,
+  ViewTeacherComponent,
+} from './components/teacher/view-teacher/view-teacher.component';
+import { AddCourseComponent } from './components/course/add-course/add-course.component';
+import {
+  DialogUpdateCourse,
+  ViewCourseComponent,
+} from './components/course/view-course/view-course.component';
+import { JoinComponent } from './components/course/join/join.component';
+import {
+  DialogUpload,
+  ViewStorageComponent,
+} from './components/storage/view-storage/view-storage.component';
+import {
+  DialogUpdateSchedule,
+  ViewScheduleComponent,
+} from './components/schedule/view-schedule/view-schedule.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +148,6 @@ import { AddTKBComponent } from './components/salary-management/addTKB/addTKB.co
     DialogMission,
     DialogAbsent,
     DialogComplain,
-    DialogUpload,
     DialogIncreaseSalary,
     DialogAdvanceSalary,
     ViewTableSalaryComponent,
@@ -131,6 +161,23 @@ import { AddTKBComponent } from './components/salary-management/addTKB/addTKB.co
     LoginComponent,
     DialogChangePass,
     AddTKBComponent,
+    AddStudentComponent,
+    ViewStudentComponent,
+    DialogRegisterCourse,
+    DialogUpdateStudent,
+    MoneyComponent,
+    DialogPayMoney,
+    AddTeacherComponent,
+    ViewTeacherComponent,
+    DialogUpdateTeacher,
+    AddCourseComponent,
+    ViewCourseComponent,
+    DialogUpdateCourse,
+    JoinComponent,
+    ViewStorageComponent,
+    DialogUpload,
+    ViewScheduleComponent,
+    DialogUpdateSchedule,
   ],
   imports: [
     BrowserModule,
@@ -158,7 +205,8 @@ import { AddTKBComponent } from './components/salary-management/addTKB/addTKB.co
     MatAutocompleteModule,
     ChartsModule,
     MatSortModule,
-
+    MatSidenavModule,
+    MatCheckboxModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

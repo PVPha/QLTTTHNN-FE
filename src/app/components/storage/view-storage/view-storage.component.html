@@ -1,0 +1,214 @@
+<div class="container">
+  <div class="title mb-2">
+    <mat-card-header>Bảng tư thiết bị</mat-card-header>
+    <!-- <button mat-menu-item (click)="openDialogComplain()" >
+      <mat-icon>note_add</mat-icon>
+    </button> -->
+  </div>
+  <div class="float-right">
+    <a
+      class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      (click)="export()"
+      ><i class="fas fa-download fa-sm text-white-50"></i> Xuất bảng bảng tư
+      thiết bị</a
+    >
+    <a
+      class="ml-4 d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      (click)="openDialogUpload()"
+      ><i class="fas fa-upload fa-sm text-white-50"></i> Nhập bảng tư thiết
+      bị</a
+    >
+  </div>
+  <!-- <mat-form-field appearance="standard">
+    <mat-label>Tìm kiếm</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input />
+  </mat-form-field> -->
+  <form
+    class="
+      d-none d-sm-inline-block
+      form-inline
+      mr-auto
+      ml-md-3
+      my-2 my-md-0
+      mw-100
+      navbar-search
+    "
+  >
+    <div class="input-group mb-2">
+      <input
+        type="text"
+        class="form-control bg-light border-0 small"
+        placeholder="Tìm kiếm..."
+        aria-label="Search"
+        aria-describedby="basic-addon2"
+        matInput
+        (keyup)="applyFilter($event)"
+        #input
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-primary pt-2"
+          style="background-color: #4e73df; border-color: #4e73df"
+          type="button"
+        >
+          <i class="fas fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step>
+      <div class="mat-elevation-z8">
+        <ng-template matStepLabel>Bảng tư thiết bị</ng-template>
+        <table mat-table [dataSource]="dataSource">
+          <!-- <ng-container matColumnDef="timeKeepingId">
+        <th mat-header-cell *matHeaderCellDef> Mã bảng chấm công</th>
+        <td mat-cell *matCellDef="let element"> {{element.timeKeepingId}} </td>
+      </ng-container>-->
+
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox
+                (change)="$event ? masterToggle() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                [aria-label]="checkboxLabel()"
+              >
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox
+                (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)"
+                [aria-label]="checkboxLabel(row)"
+              >
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="id_supplies">
+            <th mat-header-cell *matHeaderCellDef>Mã vật tư</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.id_supplies }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name_supplies">
+            <th mat-header-cell *matHeaderCellDef>Tên vật tư</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.name_supplies }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef>Loại</th>
+            <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="number">
+            <th mat-header-cell *matHeaderCellDef>Số lượng</th>
+            <td mat-cell *matCellDef="let element">{{ element.number }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="timeIn">
+            <th mat-header-cell *matHeaderCellDef>Thời gian nhập</th>
+            <td mat-cell *matCellDef="let element">{{ element.timeIn }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="timeOut">
+            <th mat-header-cell *matHeaderCellDef>Thời nhân xuất</th>
+            <td mat-cell *matCellDef="let element">{{ element.timeOut }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>Số lượng xuất</th>
+            <td mat-cell *matCellDef="let element">
+              <input
+                type="number"
+                name="countEx"
+                [value]="element.count"
+                #countEx
+                (keyup)="count(element.id_supplies, countEx.value)"
+              />
+            </td>
+          </ng-container>
+          <!-- <ng-container matColumnDef="kpi">
+        <th mat-header-cell *matHeaderCellDef> KPI </th>
+        <td mat-cell *matCellDef="let element" > {{element.kpi}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sales">
+        <th mat-header-cell *matHeaderCellDef> Doanh số </th>
+        <td mat-cell *matCellDef="let element"> {{element.sales}} </td>
+      </ng-container> -->
+
+          <!-- <button mat-menu-item mat-raised-button >
+              <mat-icon>open_in_new</mat-icon>
+              <span>chi tiết</span>
+            </button>
+            <button mat-menu-item [disabled]="element.status == 'từ chối' ? true : false">
+              <mat-icon>done</mat-icon>
+              <span>duyệt</span>
+            </button>
+            <button mat-menu-item  [disabled]="element.status == 'duyệt' ? true : false">
+              <mat-icon>clear</mat-icon>
+              <span>từ chối</span>
+            </button> -->
+
+          <!-- <button mat-menu-item (click)="openDialogComplain()" >
+              <mat-icon>assignment_late</mat-icon>
+              <span>Khiếu nại chấm công</span>
+            </button> -->
+          <!-- <button mat-menu-item >
+              <mat-icon>assignment_late</mat-icon>
+              <span>Hủy hợp đồng</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>library_books</mat-icon>
+              <span>Quản lý bằng cấp chứng chỉ</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>assessment</mat-icon>
+              <span>Lập quyết định khen thưởng</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>next_week</mat-icon>
+              <span>Lập quyết định bổ nhiệm</span>
+            </button>
+            <button mat-menu-item mat-raised-button >
+              <mat-icon>new_releases</mat-icon>
+              <span>Lập quyết định kỉ luật</span>
+            </button> -->
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+          <tr
+            mat-row
+            [class.demo-row-is-clicked]="clickedRows.has(row)"
+            *matRowDef="let row; columns: displayedColumns"
+            (click)="selection.toggle(row); selectSupplies(row)"
+          ></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">
+              không tìm thấy "{{ input.value }}"
+            </td>
+          </tr>
+        </table>
+
+        <mat-paginator
+          #MatPaginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </mat-step>
+    <!-- timeKeeping according to sale -->
+  </mat-stepper>
+</div>
+
+<!-- <ul>
+  <li *ngFor="let clickedRow of clickedRows">
+    Clicked on {{ clickedRow.id_supplies }}
+  </li>
+</ul> -->

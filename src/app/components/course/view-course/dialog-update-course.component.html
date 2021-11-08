@@ -1,0 +1,172 @@
+<div class="container">
+  <div class="title mb-3">
+    <mat-card-header>Thông tin khóa học</mat-card-header>
+  </div>
+  <form class="form">
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Mã khóa học</mat-label>
+          <input matInput #id_course [value]="data.id_course" />
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Tên khóa học</mat-label>
+          <input matInput #name_course [value]="data.name_course" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Thời gian đào tạo</mat-label>
+          <input
+            matInput
+            *ngIf="range.value.start == null"
+            type="text"
+            [value]="data.time"
+          />
+          <mat-date-range-input
+            [hidden]="range.value.start == null"
+            [formGroup]="range"
+            [rangePicker]="rangepicker"
+          >
+            <input
+              matStartDate
+              formControlName="start"
+              placeholder="Start date"
+            />
+            <input matEndDate formControlName="end" placeholder="End date" />
+            <input
+              style="display: none"
+              type="text"
+              value="{{
+                range.value.start !== null
+                  ? (range.value.start | date: 'dd-MM-yyyy')
+                  : time[0]
+              }}"
+              #timeStart
+            />
+            <input
+              style="display: none"
+              type="text"
+              value="{{
+                range.value.end !== null
+                  ? (range.value.end | date: 'dd-MM-yyyy')
+                  : time[1]
+              }}"
+              #timeEnd
+            />
+          </mat-date-range-input>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="rangepicker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #rangepicker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Loại khóa học</mat-label>
+          <input matInput #type_course [value]="data.type_course" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Học phí</mat-label>
+          <input matInput type="number" #money [value]="data.money" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row" style="display: none">
+      <div class="col">
+        <mat-label>Mô tả khóa học</mat-label>
+        <mat-form-field>
+          <textarea
+            id="describeTextArea"
+            matInput
+            rows="5"
+            #describe
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel
+          hideToggle
+          onclick="setContent('description', 'editorDescription')"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> Mô tả </mat-panel-title>
+            <mat-panel-description> Mô tả công việc </mat-panel-description>
+          </mat-expansion-panel-header>
+          <!-- <app-view-interview-schedule></app-view-interview-schedule> -->
+          <!-- <textarea name="" id="contract"  rows="20" matInput > -->
+
+          <textarea
+            style="display: none"
+            id="descriptionTextArea"
+            value="{{ data.description }}"
+            #description
+          ></textarea>
+          <div
+            id="description"
+            style="display: none"
+            [innerHTML]="data.description"
+          ></div>
+          <editor
+            id="editorDescription"
+            onmouseout=" setTimeout(getContent('descriptionTextArea'),10000)"
+            [init]="{
+              height: 200,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+            }"
+          >
+          </editor>
+          <!-- </textarea> -->
+        </mat-expansion-panel>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ml-auto mr-auto">
+        <button
+          type="submit"
+          class="btnForm btn btn-primary mt-3 mb-5"
+          (click)="
+            onSubmit(
+              data.ID,
+              id_course.value,
+              name_course.value,
+              type_course.value,
+              money.value,
+              timeStart.value,
+              timeEnd.value,
+              description.value
+            )
+          "
+          [routerLink]="['/view-course']"
+          routerLinkActive="router-link-active"
+        >
+          Cập nhật
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

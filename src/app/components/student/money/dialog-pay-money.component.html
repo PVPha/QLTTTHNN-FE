@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="title">
+    <mat-card-header>Đóng học phí</mat-card-header>
+    <!-- <mat-card-header>{{respon}}</mat-card-header> -->
+  </div>
+  <form class="form">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã học viên</mat-label>
+          <input type="text" matInput #id_stu [value]="data.id_stu" />
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên học viên</mat-label>
+          <input type="text" matInput [value]="data.name_stu" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã khóa học</mat-label>
+          <input type="text" matInput #id_course [value]="data.id_course" />
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên khóa học</mat-label>
+          <input type="text" matInput [value]="data.name_course" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Thời gian đóng</mat-label>
+          <input matInput [matDatepicker]="datepicker" #datePicker />
+          <input
+            style="display: none"
+            type="text"
+            #time_in
+            value="{{ datePicker.value | date: 'yyyy-MM-dd' }}"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Học phí</mat-label>
+          <input matInput #location [value]="data.money" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ml-auto mr-auto mb-3">
+        <button
+          type="submit"
+          class="btnForm btn btn-primary mt-2"
+          (click)="
+            onSubmit(data.ID, id_stu.value, id_course.value, time_in.value)
+          "
+          matDialogClose
+        >
+          Hoàn tất
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

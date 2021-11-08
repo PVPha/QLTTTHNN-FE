@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="title mb-3">
+    <mat-card-header>Đăng kí khóa học</mat-card-header>
+    <!-- <mat-card-header>{{respon}}</mat-card-header> -->
+  </div>
+  <form class="form">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Mã khóa học</mat-label>
+          <mat-select #mode>
+            <mat-option
+              *ngFor="let item of data; let index = index"
+              value="item.id_course"
+              (click)="changeCourse(index)"
+              >{{ item.id_course }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tên khóa học</mat-label>
+          <input
+            type="text"
+            matInput
+            #department
+            [value]="data[index].name_course"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Thời gian</mat-label>
+          <input matInput #location [value]="data[index].time" />
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Học phí</mat-label>
+          <input matInput #location [value]="data[index].money" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row" style="display: none">
+      <div class="col">
+        <mat-label>Mô tả khóa học</mat-label>
+        <mat-form-field>
+          <textarea
+            id="describeTextArea"
+            matInput
+            rows="5"
+            #describe
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-expansion-panel
+          hideToggle
+          onclick="setContent('description', 'editorDescription')"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> Mô tả </mat-panel-title>
+            <mat-panel-description> Mô tả công việc </mat-panel-description>
+          </mat-expansion-panel-header>
+          <!-- <app-view-interview-schedule></app-view-interview-schedule> -->
+          <!-- <textarea name="" id="contract"  rows="20" matInput > -->
+
+          <textarea
+            style="display: none"
+            id="descriptionTextArea"
+            value="{{ data[index].description }}"
+            #content
+          ></textarea>
+          <div
+            id="description"
+            style="display: none"
+            [innerHTML]="data[index].description"
+          ></div>
+          <editor
+            id="editorDescription"
+            onmouseout=" setTimeout(getContent('descriptionTextArea'),10000)"
+            [init]="{
+              height: 200,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+            }"
+          >
+          </editor>
+          <!-- </textarea> -->
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ml-auto mr-auto mb-3">
+        <button
+          type="submit"
+          class="btnForm btn btn-primary mt-2"
+          matDialogClose
+          (click)="onSubmit(data[index].id_course)"
+        >
+          Tạo yêu cầu
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

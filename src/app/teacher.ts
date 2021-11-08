@@ -1,7 +1,9 @@
-export interface Teacher{
-  id_tech: string;
-  name_tech: string;
-  type_tech: string;
+export interface Teacher {
+  ID: number;
+  id_tea: string;
+  name_tea: string;
+  type_tea: string;
   email: string;
-  phoneNumber: string;
+  phone: string;
+  image: string;
 }

@@ -56,7 +56,6 @@ export class ViewTableTimekeepingComponent implements OnInit {
     // 'action',
   ];
 
-
   dataSource = new MatTableDataSource<Timekeeping>(this.timeKeeping);
   dataSourceSale = new MatTableDataSource<TimekeepingAccordingToSale>(
     this.timeKeepingSale
@@ -195,11 +194,11 @@ export class ViewTableTimekeepingComponent implements OnInit {
       width: '50%',
     });
   }
-  openDialogUpload(): void {
-    const dialogRef = this.dialog.open(DialogUpload, {
-      width: '50%',
-    });
-  }
+  // openDialogUpload(): void {
+  //   const dialogRef = this.dialog.open(DialogUpload, {
+  //     width: '50%',
+  //   });
+  // }
 }
 
 @Component({
@@ -348,118 +347,118 @@ interface fileTimeKeep {
   KPI: string;
   sale: string;
 }
-@Component({
-  selector: 'dialog-upload',
-  templateUrl: './dialog-upload.component.html',
-  styleUrls: ['./view-table-timekeeping.component.css'],
-})
-export class DialogUpload {
-  constructor(private requestApiService: RequestApiService) {}
+// @Component({
+//   selector: 'dialog-upload',
+//   templateUrl: './dialog-upload.component.html',
+//   styleUrls: ['./view-table-timekeeping.component.css'],
+// })
+// export class DialogUpload {
+//   constructor(private requestApiService: RequestApiService) {}
 
-  files!: fileTimeKeep;
-  convertJson!: string;
-  jsonWorkDay!: string;
-  jsonKPI!: string;
-  jsonSale!: string;
-  fileName!: string;
-  sheetName: string[] = [];
-  fileUpload(event: any) {
-    console.log(event.target.files);
-    const selectedFile = event.target.files[0];
-    this.fileName = selectedFile.name;
-    const fileReader = new FileReader();
-    fileReader.readAsBinaryString(selectedFile);
-    fileReader.onload = (event) => {
-      console.log(event);
-      let binaryData = event.target?.result;
-      let workbook = XLSX.read(binaryData, { type: 'binary' });
-      // loop all sheet
+//   files!: fileTimeKeep;
+//   convertJson!: string;
+//   jsonWorkDay!: string;
+//   jsonKPI!: string;
+//   jsonSale!: string;
+//   fileName!: string;
+//   sheetName: string[] = [];
+//   fileUpload(event: any) {
+//     console.log(event.target.files);
+//     const selectedFile = event.target.files[0];
+//     this.fileName = selectedFile.name;
+//     const fileReader = new FileReader();
+//     fileReader.readAsBinaryString(selectedFile);
+//     fileReader.onload = (event) => {
+//       console.log(event);
+//       let binaryData = event.target?.result;
+//       let workbook = XLSX.read(binaryData, { type: 'binary' });
+//       // loop all sheet
 
-      // workbook.SheetNames.forEach(sheet => {
-      //   const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet])
-      //   console.log(data);
-      //   // this.convertJson = JSON.stringify(data, undefined, 4);
-      //   this.convertJson = JSON.stringify(data);
-      // })
-      console.log(workbook.SheetNames);
-      this.sheetName = workbook.SheetNames;
+//       // workbook.SheetNames.forEach(sheet => {
+//       //   const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet])
+//       //   console.log(data);
+//       //   // this.convertJson = JSON.stringify(data, undefined, 4);
+//       //   this.convertJson = JSON.stringify(data);
+//       // })
+//       console.log(workbook.SheetNames);
+//       this.sheetName = workbook.SheetNames;
 
-      // console.log(JSON.parse(this.convertJson)[0].Word);
-      // console.log(this.convertJson);
-      //select sheet name
-      const dataWorkDay = XLSX.utils.sheet_to_json(workbook.Sheets['WorkDay']);
-      this.jsonWorkDay = JSON.stringify(dataWorkDay);
-      console.log(this.jsonWorkDay);
-      const dataKPI = XLSX.utils.sheet_to_json(workbook.Sheets['KPI']);
-      this.jsonKPI = JSON.stringify(dataKPI);
-      console.log(this.jsonKPI);
-      const dataSale = XLSX.utils.sheet_to_json(workbook.Sheets['Sale']);
-      this.jsonSale = JSON.stringify(dataSale);
-      console.log(this.jsonSale);
-    };
-  }
-  handle(json: any) {
-    const formData: FormData = new FormData();
-    formData.append('time-keep', json);
-    return formData;
-  }
-  upload() {
-    console.log(this.sheetName);
-    // const formData: FormData = new FormData();
-    // formData.append('time-keep', this.convertJson);
-    console.log('ngày công');
-    const formDataWorkDay = this.handle(this.jsonWorkDay);
-    this.requestApiService.timeKeep(formDataWorkDay).subscribe(
-      (value) => {
-        console.log(value);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-    console.log('kpi');
-    const formDataKPI = this.handle(this.jsonKPI);
-    this.requestApiService.timeKeepKPI(formDataKPI).subscribe(
-      (value) => {
-        console.log(value);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-    console.log('doanh số');
-    const formDataSale = this.handle(this.jsonSale);
-    this.requestApiService.timeKeepSale(formDataSale).subscribe(
-      (value) => {
-        console.log(value);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-    //#region
-    // if (this.fileName.includes('ngày công')) {
-    //   console.log('ngày công');
-    //   this.requestApiService.timeKeep(formData).subscribe(value => {
-    //     console.log(value);
-    //   }, err => {
-    //     console.log(err);
-    //   })
-    // } else if(this.fileName.includes('kpi')) {
-    //   console.log('kpi');
-    //   this.requestApiService.timeKeepKPI(formData).subscribe(value => {
-    //     console.log(value);
-    //   }, err => {
-    //     console.log(err);
-    //   })
-    // } else if(this.fileName.includes('doanh số')) {
-    //   console.log('doanh số');
-    //   this.requestApiService.timeKeepSale(formData).subscribe(value => {
-    //     console.log(value);
-    //   }, err => {
-    //     console.log(err);
-    //   })
-    // }
-    //#endregion
-  }
-}
+//       // console.log(JSON.parse(this.convertJson)[0].Word);
+//       // console.log(this.convertJson);
+//       //select sheet name
+//       const dataWorkDay = XLSX.utils.sheet_to_json(workbook.Sheets['WorkDay']);
+//       this.jsonWorkDay = JSON.stringify(dataWorkDay);
+//       console.log(this.jsonWorkDay);
+//       const dataKPI = XLSX.utils.sheet_to_json(workbook.Sheets['KPI']);
+//       this.jsonKPI = JSON.stringify(dataKPI);
+//       console.log(this.jsonKPI);
+//       const dataSale = XLSX.utils.sheet_to_json(workbook.Sheets['Sale']);
+//       this.jsonSale = JSON.stringify(dataSale);
+//       console.log(this.jsonSale);
+//     };
+//   }
+//   handle(json: any) {
+//     const formData: FormData = new FormData();
+//     formData.append('time-keep', json);
+//     return formData;
+//   }
+//   upload() {
+//     console.log(this.sheetName);
+//     // const formData: FormData = new FormData();
+//     // formData.append('time-keep', this.convertJson);
+//     console.log('ngày công');
+//     const formDataWorkDay = this.handle(this.jsonWorkDay);
+//     this.requestApiService.timeKeep(formDataWorkDay).subscribe(
+//       (value) => {
+//         console.log(value);
+//       },
+//       (err) => {
+//         console.log(err);
+//       }
+//     );
+//     console.log('kpi');
+//     const formDataKPI = this.handle(this.jsonKPI);
+//     this.requestApiService.timeKeepKPI(formDataKPI).subscribe(
+//       (value) => {
+//         console.log(value);
+//       },
+//       (err) => {
+//         console.log(err);
+//       }
+//     );
+//     console.log('doanh số');
+//     const formDataSale = this.handle(this.jsonSale);
+//     this.requestApiService.timeKeepSale(formDataSale).subscribe(
+//       (value) => {
+//         console.log(value);
+//       },
+//       (err) => {
+//         console.log(err);
+//       }
+//     );
+//     //#region
+//     // if (this.fileName.includes('ngày công')) {
+//     //   console.log('ngày công');
+//     //   this.requestApiService.timeKeep(formData).subscribe(value => {
+//     //     console.log(value);
+//     //   }, err => {
+//     //     console.log(err);
+//     //   })
+//     // } else if(this.fileName.includes('kpi')) {
+//     //   console.log('kpi');
+//     //   this.requestApiService.timeKeepKPI(formData).subscribe(value => {
+//     //     console.log(value);
+//     //   }, err => {
+//     //     console.log(err);
+//     //   })
+//     // } else if(this.fileName.includes('doanh số')) {
+//     //   console.log('doanh số');
+//     //   this.requestApiService.timeKeepSale(formData).subscribe(value => {
+//     //     console.log(value);
+//     //   }, err => {
+//     //     console.log(err);
+//     //   })
+//     // }
+//     //#endregion
+//   }
+//}

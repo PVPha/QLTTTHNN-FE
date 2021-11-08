@@ -1,7 +1,9 @@
-export interface Coure {
-  id_course: string,
-  name_candidate: string,
-  money_course: number,
-  time: string,
-  description: string
+export interface Course {
+  ID: number;
+  id_course: string;
+  name_course: string;
+  type_course: string;
+  money: number;
+  time: string;
+  description: string;
 }

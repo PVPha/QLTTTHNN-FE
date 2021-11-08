@@ -27,16 +27,11 @@ export class RequestApiService {
   ) {}
 
   // start recruitment
-  getRecruitment =
-    'http://localhost:81/HRM-BE/recruitment/getData';
-  insertRecruitment =
-    'http://localhost:81/HRM-BE/recruitment/insertData';
-  deleteRecruitment =
-    'http://localhost:81/HRM-BE/recruitment/deleteData';
-  updateRecruitmentApi =
-    'http://localhost:81/HRM-BE/recruitment/updateData';
-  getRecruitmentById =
-    'http://localhost:81/HRM-BE/recruitment/getDataById/';
+  getRecruitment = 'http://localhost:81/HRM-BE/recruitment/getData';
+  insertRecruitment = 'http://localhost:81/HRM-BE/recruitment/insertData';
+  deleteRecruitment = 'http://localhost:81/HRM-BE/recruitment/deleteData';
+  updateRecruitmentApi = 'http://localhost:81/HRM-BE/recruitment/updateData';
+  getRecruitmentById = 'http://localhost:81/HRM-BE/recruitment/getDataById/';
 
   insertDataRecruitment(formData: FormData): Observable<any> {
     return this.http.post<any>(this.insertRecruitment, formData);
@@ -69,12 +64,9 @@ export class RequestApiService {
   //end recruitment
 
   // start candidate
-  getCandidate =
-    'http://localhost:81/HRM-BE/candidate/getData';
-  getCandidateByID =
-    'http://localhost:81/HRM-BE/candidate/getDataById/';
-  insertCandidate =
-    'http://localhost:81/HRM-BE/candidate/insertData';
+  getCandidate = 'http://localhost:81/HRM-BE/candidate/getData';
+  getCandidateByID = 'http://localhost:81/HRM-BE/candidate/getDataById/';
+  insertCandidate = 'http://localhost:81/HRM-BE/candidate/insertData';
 
   insertDataCandidate(formData: FormData): Observable<CandidateProfile> {
     return this.http.post<CandidateProfile>(this.insertCandidate, formData);
@@ -97,10 +89,8 @@ export class RequestApiService {
   // end candidate
 
   // start interview
-  schedule =
-    'http://localhost:81/HRM-BE/interview/insertDataSchedule';
-  point =
-    'http://localhost:81/HRM-BE/interview/insertDataPoint';
+  schedule = 'http://localhost:81/HRM-BE/interview/insertDataSchedule';
+  point = 'http://localhost:81/HRM-BE/interview/insertDataPoint';
 
   insertDataSchedule(formData: FormData): Observable<Interview> {
     return this.http.post<Interview>(this.schedule, formData);
@@ -111,8 +101,7 @@ export class RequestApiService {
   // end interview
 
   //start hiring
-  hiring =
-    'http://localhost:81/HRM-BE/hiring/insertDataHiring';
+  hiring = 'http://localhost:81/HRM-BE/hiring/insertDataHiring';
   insertDataHiring(formData: FormData): Observable<Hiring> {
     return this.http.post<Hiring>(this.hiring, formData);
   }
@@ -121,28 +110,20 @@ export class RequestApiService {
   // start records management
   insert_staffProfile =
     'http://localhost:81/HRM-BE/records/insertDataStaffProfile';
-  get_staffProfile =
-    'http://localhost:81/HRM-BE/records/getDataStaffProfile';
+  get_staffProfile = 'http://localhost:81/HRM-BE/records/getDataStaffProfile';
 
   get_staffProfileByID =
     'http://localhost:81/HRM-BE/records/getDataStaffProfileByID/';
-  contract =
-    'http://localhost:81/HRM-BE/records/insertDataContract';
+  contract = 'http://localhost:81/HRM-BE/records/insertDataContract';
   cancel_contract =
     'http://localhost:81/HRM-BE/records/insertDataCancleContract';
-  resource =
-    'http://localhost:81/HRM-BE/records/insertDataResource';
-  reward =
-    'http://localhost:81/HRM-BE/records/insertDataReward';
-  appoint =
-    'http://localhost:81/HRM-BE/records/insertDataAppoint';
-  discipline =
-    'http://localhost:81/HRM-BE/records/insertDataDiscipline';
+  resource = 'http://localhost:81/HRM-BE/records/insertDataResource';
+  reward = 'http://localhost:81/HRM-BE/records/insertDataReward';
+  appoint = 'http://localhost:81/HRM-BE/records/insertDataAppoint';
+  discipline = 'http://localhost:81/HRM-BE/records/insertDataDiscipline';
   tax = 'http://localhost:81/HRM-BE/records/insertDataTax';
-  insurance =
-    'http://localhost:81/HRM-BE/records/insertDataInsurance';
-  allowance =
-    'http://localhost:81/HRM-BE/records/insertDataAllowance';
+  insurance = 'http://localhost:81/HRM-BE/records/insertDataInsurance';
+  allowance = 'http://localhost:81/HRM-BE/records/insertDataAllowance';
   insertDataStaffProfile(formData: FormData): Observable<StaffProfiles> {
     return this.http.post<StaffProfiles>(this.insert_staffProfile, formData);
   }
@@ -150,8 +131,7 @@ export class RequestApiService {
     return this.http.get<StaffProfiles[]>(this.get_staffProfile, httpOptions);
   }
   decisionRecord(table: string): Observable<StaffProfiles[]> {
-    const url =
-      'http://localhost:81/HRM-BE/records/decision/' + table;
+    const url = 'http://localhost:81/HRM-BE/records/decision/' + table;
     return this.http.get<StaffProfiles[]>(url, httpOptions);
   }
   insertDataContract(formData: FormData): Observable<Contract> {
@@ -194,20 +174,13 @@ export class RequestApiService {
   }
   // end records management
   // start time keeping
-  getTimeKeepApi =
-    'http://localhost:81/HRM-BE/timeKeeping/getData';
-  getTimeKeepApiByID =
-    'http://localhost:81/HRM-BE/timeKeeping/getDataById/';
-  timeKeepApi =
-    'http://localhost:81/HRM-BE/timeKeeping/insertData';
-  timeKeepKPIApi =
-    'http://localhost:81/HRM-BE/timeKeeping/insertDataKPI';
-  timeKeepSaleApi =
-    'http://localhost:81/HRM-BE/timeKeeping/insertDataSale';
-  missionApi =
-    'http://localhost:81/HRM-BE/timeKeeping/insertDataMission';
-  absentApi =
-    'http://localhost:81/HRM-BE/timeKeeping/insertDataAbsent';
+  getTimeKeepApi = 'http://localhost:81/HRM-BE/timeKeeping/getData';
+  getTimeKeepApiByID = 'http://localhost:81/HRM-BE/timeKeeping/getDataById/';
+  timeKeepApi = 'http://localhost:81/HRM-BE/timeKeeping/insertData';
+  timeKeepKPIApi = 'http://localhost:81/HRM-BE/timeKeeping/insertDataKPI';
+  timeKeepSaleApi = 'http://localhost:81/HRM-BE/timeKeeping/insertDataSale';
+  missionApi = 'http://localhost:81/HRM-BE/timeKeeping/insertDataMission';
+  absentApi = 'http://localhost:81/HRM-BE/timeKeeping/insertDataAbsent';
   GetDataTimeKeep(): Observable<any[]> {
     return this.http.get<any[]>(this.getTimeKeepApi, httpOptions);
   }
@@ -216,9 +189,7 @@ export class RequestApiService {
     return this.http.get<any>(url, httpOptions);
   }
   decisionTimeKeep(table: string): Observable<any[]> {
-    const url =
-      'http://localhost:81/HRM-BE/timeKeeping/decision/' +
-      table;
+    const url = 'http://localhost:81/HRM-BE/timeKeeping/decision/' + table;
     return this.http.get<any[]>(url, httpOptions);
   }
   GetDataTimeKeepById(ID: string): Observable<any[]> {
@@ -244,16 +215,11 @@ export class RequestApiService {
 
   //start salary
   dataSalary = 'http://localhost:81/HRM-BE/salary/getData';
-  dataSalaryByID =
-    'http://localhost:81/HRM-BE/salary/getDataByID/';
-  calculation =
-    'http://localhost:81/HRM-BE/salary/getDataCalculation';
-  updateCalculation =
-    'http://localhost:81/HRM-BE/salary/updateDataCalculation';
-  increaseSalary =
-    'http://localhost:81/HRM-BE/salary/insertDataIncreaseSalary';
-  advanceSalary =
-    'http://localhost:81/HRM-BE/salary/insertDataAdvanceSalary';
+  dataSalaryByID = 'http://localhost:81/HRM-BE/salary/getDataByID/';
+  calculation = 'http://localhost:81/HRM-BE/salary/getDataCalculation';
+  updateCalculation = 'http://localhost:81/HRM-BE/salary/updateDataCalculation';
+  increaseSalary = 'http://localhost:81/HRM-BE/salary/insertDataIncreaseSalary';
+  advanceSalary = 'http://localhost:81/HRM-BE/salary/insertDataAdvanceSalary';
   getDataSalary(): Observable<any[]> {
     return this.http.get<any[]>(this.dataSalary, httpOptions);
   }
@@ -288,20 +254,15 @@ export class RequestApiService {
     return this.http.get<any>(this.dataChart);
   }
   //training
-  insertTraining =
-    'http://localhost:81/HRM-BE/training/insertData';
-  dataTraining =
-    'http://localhost:81/HRM-BE/training/getData';
-  dataTrainingById =
-    'http://localhost:81/HRM-BE/training/getDataById/';
+  insertTraining = 'http://localhost:81/HRM-BE/training/insertData';
+  dataTraining = 'http://localhost:81/HRM-BE/training/getData';
+  dataTrainingById = 'http://localhost:81/HRM-BE/training/getDataById/';
   approvalTraining =
     'http://localhost:81/HRM-BE/training/insertDataParticipate';
   getDataParticipate =
     'http://localhost:81/HRM-BE/training/getDataParticipate/';
-  getDataProcess =
-    'http://localhost:81/HRM-BE/training/getDataProcess/';
-  updateDataProcess =
-    'http://localhost:81/HRM-BE/training/updateDataProcess';
+  getDataProcess = 'http://localhost:81/HRM-BE/training/getDataProcess/';
+  updateDataProcess = 'http://localhost:81/HRM-BE/training/updateDataProcess';
   insertDataTraining(formData: FormData): Observable<any> {
     return this.http.post<any>(this.insertTraining, formData);
   }
@@ -329,5 +290,23 @@ export class RequestApiService {
   }
   insertDataProcess(formData: FormData): Observable<any> {
     return this.http.post<any>(this.updateDataProcess, formData);
+  }
+
+  //ttthnn
+  baseUrl = 'http://localhost:8080/QLTTTHNN-BE/';
+  insert(formData: FormData, url: string): Observable<any> {
+    return this.http.post<any>(this.baseUrl + url, formData);
+  }
+  getData(url: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl + url, httpOptions);
+  }
+  getDataByID(url: string): Observable<any> {
+    return this.http.get<any>(this.baseUrl + url, httpOptions);
+  }
+  update(formData: FormData, url: string): Observable<any> {
+    return this.http.post<any>(this.baseUrl + url, formData);
+  }
+  delete(formData: FormData, url: string): Observable<any> {
+    return this.http.post<any>(this.baseUrl + url, formData);
   }
 }
