@@ -31,13 +31,13 @@
             <input
               style="display: none"
               type="text"
-              value="{{ range.value.start | date: 'dd-MM-yyyy' }}"
+              value="{{ range.value.start | date: 'yyyy-MM-dd' }}"
               #timeStart
             />
             <input
               style="display: none"
               type="text"
-              value="{{ range.value.end | date: 'dd-MM-yyyy' }}"
+              value="{{ range.value.end | date: 'yyyy-MM-dd' }}"
               #timeEnd
             />
           </mat-date-range-input>

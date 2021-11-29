@@ -2,7 +2,9 @@
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Chào mừng bạn đến với trung tâm tin học HRM</h1>
+    <h1 class="h3 mb-0 text-gray-800">
+      Chào mừng bạn đến với trung tâm tin học HRM
+    </h1>
     <!-- <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
       ><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a
     > -->
@@ -27,11 +29,12 @@
                 Số Học Viên
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                {{ LTV == null ? 0 : (LTV | currency: "VND":"") }}
+                <!-- {{ LTV == null ? 0 : (LTV | currency: "VND":"") }} -->
+                {{ HV }}
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+              <i class="fas fa-user fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -52,10 +55,10 @@
                   mb-1
                 "
               >
-                Các Khóa Học
+                Số học phí
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                {{ LCT | currency: "VND":"" }}
+                {{ HP == null ? 0 : (HP | currency: "VND":"") }}
               </div>
             </div>
             <div class="col-auto">
@@ -75,12 +78,12 @@
               <div
                 class="text-xs font-weight-bold text-info text-uppercase mb-1"
               >
-                Số học viên tốt nghiệp
+                Số học viên đã đóng học phí
               </div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
                   <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                    {{ DPV }}%
+                    {{ SVDDHP }}%
                   </div>
                 </div>
                 <div class="col">
@@ -88,7 +91,7 @@
                     <div
                       class="progress-bar bg-info"
                       role="progressbar"
-                      [style.width.%]="DPV"
+                      [style.width.%]="SVDDHP"
                       aria-valuenow="100"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -119,12 +122,12 @@
                   mb-1
                 "
               >
-                Hỗ Trợ
+                Số vật tư trong kho
               </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ CH }}</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ K }}</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-comments fa-2x text-gray-300"></i>
+              <i class="fas fa-warehouse fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
@@ -179,13 +182,15 @@
           </div>
           <div class="mt-4 text-center small">
             <span class="mr-2">
-              <i class="fas fa-circle text-primary"></i> Học viên đang theo học {{ CT }}
+              <i class="fas fa-circle text-primary"></i> Học viên đang theo học
+              {{ HVDH }}
             </span>
             <span class="mr-2">
-              <i class="fas fa-circle text-success"></i>  Học viên đã tốt nghiệp {{ TV }}
+              <i class="fas fa-circle text-success"></i> Học viên chưa học
+              {{ HVCH }}
             </span>
             <span class="mr-2">
-              <i class="fas fa-circle text-info"></i> Tổng số học viên   {{ NV }}
+              <i class="fas fa-circle text-info"></i> Tổng số học viên {{ HV }}
             </span>
           </div>
         </div>
@@ -262,13 +267,15 @@
           </div>
           <div class="mt-4 text-center small">
             <span class="mr-2">
-              <i class="fas fa-circle text-primary_2"></i> Khóa học đang có {{ TD }}
+              <i class="fas fa-circle text-primary_2"></i> Khóa học đang dạy
+              {{ KHCHT }}
             </span>
             <span class="mr-2">
-              <i class="fas fa-circle text-success_2"></i> Khóa đã xong {{ TC }}
+              <i class="fas fa-circle text-success_2"></i> Khóa đã xong
+              {{ KHHT }}
             </span>
             <span class="mr-2">
-              <i class="fas fa-circle text-info_2"></i> Chờ: {{ CH }}
+              <i class="fas fa-circle text-info_2"></i> Tổng khóa học: {{ TKH }}
             </span>
           </div>
         </div>

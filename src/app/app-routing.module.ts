@@ -31,7 +31,7 @@ import { ViewStorageComponent } from './components/storage/view-storage/view-sto
 import { ViewScheduleComponent } from './components/schedule/view-schedule/view-schedule.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',

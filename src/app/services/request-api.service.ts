@@ -249,10 +249,10 @@ export class RequestApiService {
   test = 'http://localhost:81/HRM-BE/salary/getData';
 
   //dashboard
-  dataChart = 'http://localhost:81/HRM-BE/token/getDataChart';
-  getDataChart(): Observable<any> {
-    return this.http.get<any>(this.dataChart);
-  }
+  // dataChart = 'http://localhost:81/HRM-BE/token/getDataChart';
+  // getDataChart(): Observable<any> {
+  //   return this.http.get<any>(this.dataChart);
+  // }
   //training
   insertTraining = 'http://localhost:81/HRM-BE/training/insertData';
   dataTraining = 'http://localhost:81/HRM-BE/training/getData';
@@ -308,5 +308,9 @@ export class RequestApiService {
   }
   delete(formData: FormData, url: string): Observable<any> {
     return this.http.post<any>(this.baseUrl + url, formData);
+  }
+  //dataChart = 'http://localhost:81/HRM-BE/token/getDataChart';
+  getDataChart(url: string): Observable<any> {
+    return this.http.get<any>(url);
   }
 }

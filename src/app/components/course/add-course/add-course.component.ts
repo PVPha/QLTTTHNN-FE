@@ -48,6 +48,8 @@ export class AddCourseComponent implements OnInit {
       type_cou: type_course,
       money: money,
       time: timeStart + ' - ' + timeEnd,
+      time_start: timeStart,
+      time_end: timeEnd,
       description: description,
     };
     const toJson = JSON.stringify(data);

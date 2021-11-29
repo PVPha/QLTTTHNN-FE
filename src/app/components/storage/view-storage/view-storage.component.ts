@@ -202,6 +202,7 @@ export class ViewStorageComponent implements OnInit {
     this.requestApiService.update(formData, 'warehouse/export').subscribe(
       (value) => {
         this.exportAsExcelFile(value, 'Bảng xuất kho');
+        this.getData();
       },
       (error) => {
         console.log(error);
@@ -285,6 +286,9 @@ export class ViewStorageComponent implements OnInit {
   openDialogUpload(): void {
     const dialogRef = this.dialog.open(DialogUpload, {
       width: '50%',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getData();
     });
   }
 }
