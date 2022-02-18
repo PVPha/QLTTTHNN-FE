@@ -90,3 +90,7 @@ mat-button-toggle-group {
 .btnForm:last-child {
   margin: 0 auto;
 }
+
+.mat-form-field {
+  width: 100%;
+}

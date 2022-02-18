@@ -17,6 +17,9 @@ import { StaffParticipate } from 'src/app/staff-participate';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 import { AuthService } from 'src/app/services/auth.service';
+import { Course } from 'src/app/course';
+import { Money } from 'src/app/money';
+import { Student } from 'src/app/student';
 const EXCEL_TYPE =
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -89,8 +92,10 @@ export class JoinComponent implements OnInit {
     'phone',
     'id_course',
     'name_course',
+    'graduate',
+    'action',
   ];
-  dataSource = new MatTableDataSource<StaffParticipate>(this.staffParticipate);
+  dataSource = new MatTableDataSource<any>(this.staffParticipate);
 
   @ViewChild(MatPaginator) paginatior!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -138,6 +143,73 @@ export class JoinComponent implements OnInit {
       (value) => {
         console.log(value);
         this.dataSource.data = value;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  openDialogGraduate(id_course: number, id_stu: number, index: number): void {
+    const dialogConfig = new MatDialogConfig();
+    this.requestApiService
+      .getDataByID('joincou/getStudentByID/' + id_course + '|' + id_stu)
+      .subscribe((value) => {
+        console.log(value);
+
+        // dialogConfig.data = value[0];
+        // dialogConfig.width = '100%';
+        // const dialogRef = this.dialog.open(DialogRegisterCourse, dialogConfig);
+        dialogConfig.data = value[0];
+        dialogConfig.width = '100%';
+        const dialogRef = this.dialog.open(DialogGraduate, dialogConfig);
+        dialogRef.afterClosed().subscribe((result) => {
+          if (this.paginatior.pageIndex > 0) {
+            const pos =
+              this.paginatior.pageSize * this.paginatior.pageIndex + index;
+            console.log(pos);
+            this.dataSource.data[pos].graduate =
+              result.data == 1 ? 'Tốt nghiệp' : 'Chưa tốt nghiệp';
+            // this.dataSource.data[pos].time_in = result.data[0];
+          } else {
+            console.log(index);
+            this.dataSource.data[index].graduate =
+              result.data == 1 ? 'Tốt nghiệp' : 'Chưa tốt nghiệp';
+            // this.dataSource.data[index].status = result.data[1];
+          }
+        });
+      });
+  }
+}
+
+@Component({
+  selector: 'dialog-graduate',
+  templateUrl: './dialog-graduate.component.html',
+  styleUrls: ['./join.component.css'],
+})
+export class DialogGraduate {
+  index: number = 0;
+  constructor(
+    public dialogRef: MatDialogRef<DialogGraduate>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private requestApiService: RequestApiService
+  ) {}
+
+  onSubmit(ID: number, id_stu: string, id_course: string, graduate: string) {
+    const gra = {
+      ID: ID,
+      id_stu: id_stu,
+      id_course: id_course,
+      graduate: graduate,
+    };
+    const toJson = JSON.stringify(gra);
+    console.log(toJson);
+    const formData: FormData = new FormData();
+    formData.append('graduate', toJson);
+    this.requestApiService.update(formData, 'joincou/graduate').subscribe(
+      (res) => {
+        console.log(res);
+        this.dialogRef.close({ data: [graduate] });
       },
       (err) => {
         console.log(err);

@@ -106,7 +106,10 @@ import {
   DialogUpdateCourse,
   ViewCourseComponent,
 } from './components/course/view-course/view-course.component';
-import { JoinComponent } from './components/course/join/join.component';
+import {
+  DialogGraduate,
+  JoinComponent,
+} from './components/course/join/join.component';
 import {
   DialogUpload,
   ViewStorageComponent,
@@ -178,6 +181,7 @@ import {
     DialogUpload,
     ViewScheduleComponent,
     DialogUpdateSchedule,
+    DialogGraduate,
   ],
   imports: [
     BrowserModule,

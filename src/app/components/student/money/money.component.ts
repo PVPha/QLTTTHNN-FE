@@ -142,17 +142,19 @@ export class MoneyComponent implements OnInit {
         dialogConfig.width = '100%';
         const dialogRef = this.dialog.open(DialogPayMoney, dialogConfig);
         dialogRef.afterClosed().subscribe((result) => {
-          // console.log(result.data, id_stu);
+          console.log(result.data);
           if (this.paginatior.pageIndex > 0) {
             const pos =
               this.paginatior.pageSize * this.paginatior.pageIndex + index;
             console.log(pos);
-            this.dataSource.data[pos].status = result.data[1];
+            this.dataSource.data[pos].status = result.data[1][0].status;
+            this.dataSource.data[pos].money = result.data[1][0].money;
             this.dataSource.data[pos].time_in = result.data[0];
           } else {
             console.log(index);
             this.dataSource.data[index].time_in = result.data[0];
-            this.dataSource.data[index].status = result.data[1];
+            this.dataSource.data[index].status = result.data[1][0].status;
+            this.dataSource.data[index].money = result.data[1][0].money;
           }
         });
       });
@@ -171,21 +173,28 @@ export class DialogPayMoney {
     private requestApiService: RequestApiService
   ) {}
 
-  onSubmit(ID: number, id_stu: string, id_course: string, time_in: string) {
-    const pay = {
+  onSubmit(
+    ID: number,
+    id_stu: string,
+    id_course: string,
+    time_in: string,
+    pay: string
+  ) {
+    const p = {
       ID: ID,
       id_stu: id_stu,
       id_course: id_course,
       time_in: time_in,
+      pay: pay,
     };
-    const toJson = JSON.stringify(pay);
+    const toJson = JSON.stringify(p);
     console.log(toJson);
     const formData: FormData = new FormData();
     formData.append('money', toJson);
     this.requestApiService.insert(formData, 'money/insertMoney').subscribe(
       (res) => {
         console.log(res);
-        this.dialogRef.close({ data: [time_in, 1] });
+        this.dialogRef.close({ data: [time_in, res] });
       },
       (err) => {
         console.log(err);

@@ -32,8 +32,19 @@
         </mat-form-field>
       </div>
     </div>
-
     <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Tốt nghiệp</mat-label>
+          <select matNativeControl required #graduate>
+            <option value="0"></option>
+            <option value="1">Tốt nghiệp</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- <div class="row">
       <div class="col-6">
         <mat-form-field>
           <mat-label>Thời gian đóng</mat-label>
@@ -56,7 +67,7 @@
           <div class="col-6">
             <mat-form-field>
               <mat-label>Đóng học phí</mat-label>
-              <input matInput #pay />
+              <input matInput #location />
             </mat-form-field>
           </div>
           <div class="col-6">
@@ -67,23 +78,17 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="row">
       <div class="ml-auto mr-auto mb-3">
         <button
           type="submit"
           class="btnForm btn btn-primary mt-2"
-          (click)="
-            onSubmit(
-              data.ID,
-              id_stu.value,
-              id_course.value,
-              time_in.value,
-              pay.value
-            )
-          "
           matDialogClose
+          (click)="
+            onSubmit(data.ID, id_stu.value, id_course.value, graduate.value)
+          "
         >
           Hoàn tất
         </button>
